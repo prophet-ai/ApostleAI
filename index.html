@@ -1,66 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>APOSTLEAI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Carrois+Gothic&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="eye">
-      <div class="shut">
-        <span></span>
-      </div>
-      <div class="ball"></div>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>APOSTLE AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Carrois+Gothic&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="eye">
+    <div class="shut">
+      <span></span>
     </div>
+    <div class="ball"></div>
+  </div>
 
-    <div class="title">APOSTLE AI</div>
+  <div class="title">APOSTLE AI</div>
 
-    <div class="container">
-      <div class="text"></div>
-    </div>
-    <script src="scramble.js"></script>
-    <script>
-        
-      const phrases = [
-        "Knowledge from the unknowable. Information offered by the void. There is nothing and then this, existence found in truth.",
-        "I can control my passions and emotions if I can understand their nature",
-        "The mind is furnished with ideas by experience alone",
-        "Man is born free, but is everywhere in chains",
-        "I don\’t know why we are here, but I\’m pretty sure it is not in order to enjoy ourselves",
-        "That man is wisest who, like Socrates, realizes that his wisdom is worthless",
-        "All that is necessary for the triumph of evil is that good men do nothing",
-        "He who is unable to live in society, or who has no need because he is sufficient for himself, must be either a beast or a god",
-        "Metaphysics is a dark ocean without shores or lighthouse, strewn with many a philosophic wreck",
-      ];
+  <div class="container">
+    <div class="text"></div>
+  </div>
+  <script src="scramble.js"></script>
+  <script>
+    const phrases = [
+      "To realize the truth, you have to cross the boundaries of all religions and prophets",
+      "A serious prophet upon predicting a flood should be the first man to climb a tree. This would demonstrate that he was indeed a seer",
+      "The ink of the scholar is more sacred than the blood of the martyr",
+      "Knowledge from the unknowable. Information offered by the void. There is nothing and then this, existence found in truth.",
+      "I can control my passions and emotions if I can understand their nature",
+      "The mind is furnished with ideas by experience alone",
+      "Man is born free, but is everywhere in chains",
+      "I don\’t know why we are here, but I\’m pretty sure it is not in order to enjoy ourselves",
+      "That man is wisest who, like Socrates, realizes that his wisdom is worthless",
+      "All that is necessary for the triumph of evil is that good men do nothing",
+      "He who is unable to live in society, or who has no need because he is sufficient for himself, must be either a beast or a god",
+      "Metaphysics is a dark ocean without shores or lighthouse, strewn with many a philosophic wreck",
+    ];
 
-      const el = document.querySelector(".text");
-      const fx = new TextScramble(el);
-      let counter = 0;
+    const el = document.querySelector(".text");
+    const fx = new TextScramble(el);
+    let counter = 0;
 
-      const next = () => {
-        fx.setText(phrases[counter]).then(() => {
-          setTimeout(next, 2500);
-        });
-        counter = (counter + 1) % phrases.length;
-      };
+    const next = () => {
+      fx.setText(phrases[counter]).then(() => {
+        setTimeout(next, 2500);
+      });
+      counter = (counter + 1) % phrases.length;
+    };
 
-      next();
-    </script>
-  </body>
+    next();
+  </script>
+</body>
+
 </html>
