@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>APOSTLE AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Carrois+Gothic&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
@@ -27,7 +27,16 @@
   <div class="container">
     <div class="text"></div>
   </div>
-  <script src="scramble.js"></script>
+
+
+  <div id="messageContainer" class="messageContainer">
+		<div id="chat" class="chat">
+			<div id="messages" class="messages"></div>
+			<input id="input" type="text" placeholder="Speak your mind..." autocomplete="off" autofocus="true" />
+		</div>
+	</div>
+
+  <script src="js/scramble.js"></script>
   <script>
     const phrases = [
       "To realize the truth, you have to cross the boundaries of all religions and prophets",
