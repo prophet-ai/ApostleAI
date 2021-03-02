@@ -9,6 +9,9 @@ window.onload = function () {
 
 // Isolate the chatButton element from index.html
 var sendChat = document.getElementById("chatButton");
+// Variables used to save a chat log
+var saveButton = document.getElementById("saveChat");
+var chatLog = "ApostleAI Chat Log\n";
 
 // This function will run when the chatButton is clicked on the html page.
 sendChat.onclick = function () {
@@ -35,6 +38,10 @@ document.addEventListener("keyup", function (event) {
 // Function to display the user's message in the message box on the html page
 function sendUserMessage(input) {
   const messagesContainer = document.getElementById("messages");
+
+  //Add the user's message to the chat log
+  chatLog += "\nUser: " + input;
+  saveButton.href = saveChatLog(chatLog);
 
   // Creates a div for the message, propogates it with the necessary information and then appends it to the messages div
   let userMessageDiv = document.createElement("div");
@@ -70,6 +77,10 @@ function sendBotMessage(input, delay) {
   botMessageDiv.appendChild(botMessageImg);
   botMessageDiv.appendChild(botMessageText);
   messagesContainer.appendChild(botMessageDiv);
+
+  //CHANGE THIS ONCE WE THE BOT STARTS OUTPUTTING REAL RESPONSES!!!!!!!!!!!!!!!
+  chatLog += "\nApostleAI: " + input;
+  saveButton.href = saveChatLog(chatLog);
 
   // Keep the most recent message at the bottom and pushes old ones up
   messagesContainer.scrollTop =
@@ -113,3 +124,19 @@ function generateResponse(input) {
   // Passes the  bot-generated product to the sendBotMessage function to be displayed on the html page
   sendBotMessage(input);
 }
+
+var textFile = null,
+saveChatLog = function (text) {
+  var data = new Blob([text], {type: 'text/plain'});
+
+  // If we are replacing a previously generated file we need to
+  // manually revoke the object URL to avoid memory leaks.
+  if (textFile !== null) {
+    window.URL.revokeObjectURL(textFile);
+  }
+
+  textFile = window.URL.createObjectURL(data);
+
+  // returns a URL you can use as a href
+  return textFile;
+};
