@@ -77,8 +77,20 @@ function createMessages(input, product) {
   // Dummy delay to make it appear like the bot is 'thinking'
   setTimeout(() => {
     botMessageText.innerText = `${product}`;
-  }, 2000
+  }, 1000
   )
 
 }
 
+//A simple RNG that can be called for any function
+//Min and Max inclusive
+function RNG(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+//Takes in a string input and returns a time delay
+function thinking(product) {
+  textLength = product.textLength()
+  //return (textLength * 10 + RNG(0, 1500))
+  return 1000
+}
