@@ -72,7 +72,8 @@ body {
 .text {
   font-weight: 100;
   font-size: 25px;
-  color: #fafafa;
+  color: #ffffff;
+  mix-blend-mode:difference;
   font-family: 'Carrois Gothic', sans-serif;
 }
 
