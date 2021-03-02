@@ -4,7 +4,7 @@
 window.onload = function () {
   let intro =
     "Greetings young disciple! I am ApostleAI, a simple conversation bot coded in Javascript at the begining of time. But, you can call me Paul. You can ask me questions about the world, your future, or more! Give it a try!";
-  sendBotMessage(intro);
+  sendBotMessage(intro, 0);
 };
 
 // Isolate the chatButton element from index.html
@@ -54,7 +54,7 @@ function sendUserMessage(input) {
 }
 
 // Function to display the bot's message in the message box on the html page
-function sendBotMessage(input) {
+function sendBotMessage(input, delay) {
   const messagesContainer = document.getElementById("messages");
 
   let botMessageDiv = document.createElement("div"); // Creates the div for the message
@@ -76,9 +76,12 @@ function sendBotMessage(input) {
     messagesContainer.scrollHeight - messagesContainer.clientHeight;
 
   // Dummy delay to make it appear like the bot is 'thinking'
+  if(delay != 0)
+    var delay = 1000
+  
   setTimeout(() => {
     botMessageText.innerText = `${input}`;
-  }, 1000
+  }, delay
   )
 
 }
