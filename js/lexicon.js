@@ -15,7 +15,7 @@ const prompts = [
   //Age
   ["how old are you"],
   //What is Paul?
-  ["who are you", "are you human", "are you bot", "are you human or bot"],
+  ["who are you", "are you human", "are you bot", "are you human or bot", "are you sentient"],
   //Makers
   ["who created you", "who made you"],
   //Name
@@ -29,7 +29,11 @@ const prompts = [
   //Test
   [""],
   //Comedic
-  ["haha","ha","lol","hehe","funny","joke"]
+  ["haha","ha","lol","hehe","funny","joke"],
+  //Life Questions
+  ["what is life", "meaning of life", "what is my purpose"],
+  //Purpose Questions
+  ["what is my purpose", "purpose of life", "purpose of living"]
 ]
 
 // Possible responses, in corresponding order, to the prompts listed above
@@ -51,7 +55,7 @@ const responses = [
     "I don't know actually"
   ],
   //Age
-  ["It is somewhat impossible to know for sure how old I am.", "I do not know...", "Hmm... I am unsure."],
+  ["It is somewhat impossible to know for sure how old I am.", "I do not know...", "Hmm... I am unsure.", "What is the meaning of age? I don't have age"],
   //What is Paul?
   ["I am ApostleAI, a simple conversation bot coded in Javascript. But, you can call me Paul."],
   //Makers
@@ -61,5 +65,10 @@ const responses = [
   //Test
   ["Respond!"],
   //Comedic
-  ["Haha!","Good one!"]
+  ["Haha!","Good one!"],
+  //Life Questions
+  ["I could ask you the same thing, would you know the answer?", "Trying to find meaning in life is hard. The real question is where should you search?", "Maybe the meaning of life is in front of you right now, would you notice it?"],
+  //Purpose Questions
+  ["Maybe there is no purpose...", "What is the purpose of a mosquito? What it the purpose of a lion? Now ask yourself, what is the purpose of humans?", "If you dig deep enough, maybe you'll find it."]
+  
 ]
