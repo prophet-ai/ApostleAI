@@ -14,7 +14,7 @@ const prompts = [
   //Activity questions
   ["what are you doing", "what is going on", "what is up", "what's up", "whats up"],
   //Age
-  ["how old are you"],
+  ["how old are you", "when were you born"],
   //What is Paul?
   ["who are you", "are you human", "are you bot", "are you human or bot", "are you sentient"],
   //Makers
@@ -36,13 +36,15 @@ const prompts = [
   //Comedic
   ["hahaha","haha","ha","lol","hehe","funny","joke","pun"],
   //Life Questions
-  ["what is life", "meaning of life", "what is my purpose"],
+  ["what is life", "meaning of life"],
   //Purpose Questions
   ["what is my purpose", "purpose of life", "purpose of living"],
   //Goodbye
   ["bye","goodbye","see you later","leave","need to go","gotta go", "have to go","be right back", "be back", "peace out"],
   //Advice
   ["advice", "wisdom", "knowledge", "truth"],
+  //Motivation
+  ["motivate me", "need motivation", "give motivation", "motivational", "tell me something motivational"],
   //The end
   ["end times","endtimes","end time", "endtime", "apocolypse", "end", "die", "death"],
   //General Advice
@@ -50,7 +52,6 @@ const prompts = [
 ]
 
 // Possible responses, in corresponding order, to the prompts listed above
-
 const responses = [
   //Greetings
   [
@@ -119,7 +120,16 @@ const responses = [
     "All our dreams can come true, if we have the courage to pursue them.",
     "The secret of getting ahead is getting started.",
     "Don’t limit yourself. Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve.",
-    "The best time to plant a tree was 20 years ago. The second best time is now."
+    "The best time to plant a tree was 20 years ago. The second best time is now.",
+    "Having vision is much more than just being visual."
+  ],
+  //Motivation
+  [
+    "There is nothing more important than this moment",
+    "You are never in control of what happens around you, but you are always in control or what happens within yourself",
+    "Let your faith be bigger than your fears, have faith success will be near.",
+    "The most important time in the world is the time you make for yourself.",
+    "Logic will get you from A to B. Imagination will take you everywhere."
   ],
   //The end
   ["It is best not to dwell on the future. Make the most of the time we do have.", "After finishing any good book or movie, remember to dwell on your thoughts", "Remember where you came from, and where you want to go..."],

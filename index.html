@@ -56,6 +56,9 @@
       "All that is necessary for the triumph of evil is that good men do nothing",
       "He who is unable to live in society, or who has no need because he is sufficient for himself, must be either a beast or a god",
       "Metaphysics is a dark ocean without shores or lighthouse, strewn with many a philosophic wreck",
+      "Whether you take the doughnut hole as a blank space or as an entity unto itself is a purely metaphysical question and does not affect the taste of the doughnut one bit.",
+      "The less you know, the more you will be known. The less you want, the more you will have. The less you are, the more you will be",
+      "Attention is the money of the universe; what you pay attention to you buy",
     ];
 
     const el = document.querySelector(".text");
@@ -64,7 +67,7 @@
 
     const next = () => {
       fx.setText(phrases[counter]).then(() => {
-        setTimeout(next, 2500);
+        setTimeout(next, 4000);
       });
       counter = (counter + 1) % phrases.length;
     };
