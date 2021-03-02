@@ -73,11 +73,11 @@ function sendBotMessage(input, delay) {
 
   // Keep the most recent message at the bottom and pushes old ones up
   messagesContainer.scrollTop =
-    messagesContainer.scrollHeight - messagesContainer.clientHeight;
+  messagesContainer.scrollHeight - messagesContainer.clientHeight;
 
   // Dummy delay to make it appear like the bot is 'thinking'
   if(delay != 0)
-    var delay = 1000
+    var delay = 1000;
   
   setTimeout(() => {
     botMessageText.innerText = `${input}`;
@@ -90,13 +90,6 @@ function sendBotMessage(input, delay) {
 //Min and Max inclusive
 function RNG(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
-
-//Takes in a string input and returns a time delay
-function thinking(product) {
-  textLength = product.textLength()
-  //return (textLength * 10 + RNG(0, 1500))
-  return 1000
 }
 
 // Function to generate a response based on the input message from the user
