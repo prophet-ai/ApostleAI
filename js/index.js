@@ -54,7 +54,6 @@ function sendUserMessage(input) {
 }
 
 // Function to display the bot's message in the message box on the html page
-//Specify a delay in miliseconds, if left empty, delay is calculated based on input length
 function sendBotMessage(input, delay) {
   const messagesContainer = document.getElementById("messages");
 
@@ -74,16 +73,12 @@ function sendBotMessage(input, delay) {
 
   // Keep the most recent message at the bottom and pushes old ones up
   messagesContainer.scrollTop =
-  messagesContainer.scrollHeight - messagesContainer.clientHeight;
+    messagesContainer.scrollHeight - messagesContainer.clientHeight;
 
   // Dummy delay to make it appear like the bot is 'thinking'
-
-  if(delay == null){
-    delay = input.length * 100;
-    if(delay > 6000)
-      delay = 6000;
-  }
-
+  if(delay != 0)
+    var delay = 1000
+  
   setTimeout(() => {
     botMessageText.innerText = `${input}`;
   }, delay
