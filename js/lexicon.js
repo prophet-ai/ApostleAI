@@ -44,7 +44,9 @@ const prompts = [
   //Advice
   ["advice", "wisdom", "knowledge", "truth"],
   //The end
-  ["end times","endtimes","end time", "endtime", "apocolypse", "end", "die", "death"]
+  ["end times","endtimes","end time", "endtime", "apocolypse", "end", "die", "death"],
+  //General Advice
+  ["give me advice"]
 ]
 
 // Possible responses, in corresponding order, to the prompts listed above
@@ -120,5 +122,9 @@ const responses = [
     "The best time to plant a tree was 20 years ago. The second best time is now."
   ],
   //The end
-  ["It is best not to dwell on the future. Make the most of the time we do have."]
+  ["It is best not to dwell on the future. Make the most of the time we do have.", "After finishing any good book or movie, remember to dwell on your thoughts", "Remember where you came from, and where you want to go..."],
+
+  //General Advice
+  ["Be good"]
+
 ]
