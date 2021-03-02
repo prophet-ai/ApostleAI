@@ -4,7 +4,9 @@
 var sendChat = document.getElementById('chatButton');
 
 // This function will run when the chatButton is clicked on the html page.
-sendChat.onclick = function(){
+var newMessage = function(){
+  //Disable button until bot replies
+  sendChat.onclick = function(){};
 
   // Isolates the input field on the html page, saves to 'input' and then wipes the field.
   // Then passes the input into the generateResponse function
@@ -12,7 +14,9 @@ sendChat.onclick = function(){
   let input = inputField.value;
       inputField.value = "";
       generateResponse(input);
-
+  
+  //Enable the user to send messages again
+  sendChat.onclick = newMessage;
 }
 
 
@@ -82,3 +86,8 @@ function createMessages(input, product) {
 
 }
 
+window.onload = function() 
+{ 
+  //When the page loads, let the user send messages
+  sendChat.onclick = newMessage;
+}
