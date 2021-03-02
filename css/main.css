@@ -89,28 +89,30 @@ body {
 .messageContainer {
   bottom: 20px;
   left: 25%;
-  
   position:absolute;
 }
 
 .chat {
-	height: 300px;
+	height: 350px;
 	width: 50vw;
 	display: flex;
 	flex-direction: column;
   justify-content: center;
 	align-items: center;
 } 
-
-::-webkit-input-placeholder { 
-	color: .711 
-}
  
 input { 
 	border: 0; 
-	padding: 15px; 
-	margin-left: auto;
-	border-radius: 10px; 
+	padding: 15px;
+  margin: 1em; 
+	border-radius: 10px;
+  width: 30%; 
+}
+
+#msgSpan {
+	padding-right: 15px;
+	padding-left: 15px;
+  
 }
 
 .messages {
@@ -123,4 +125,22 @@ input {
 	padding: 15px;
 	margin: 15px;
 	border-radius: 10px;
+}
+
+#bot {
+	margin-left: auto;
+}
+
+.bot {
+	font-family: 'Carrois Gothic', sans-serif;
+}
+
+.avatar {
+	height: 35px;
+}
+
+.response {
+	display: flex;
+	align-items: center;
+	margin: 1%;
 }
