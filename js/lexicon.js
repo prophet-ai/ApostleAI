@@ -8,7 +8,7 @@ const prompts = [
 
   //Greetings
   ["hi", "hey", "hello", "good morning", "good afternoon"],
-  //Personal questions
+  //How are you
   ["how are you", "how is life", "how are things"],
   //Activity questions
   ["what are you doing", "what is going on", "what is up"],
@@ -28,20 +28,36 @@ const prompts = [
   ],
   //Test
   [""],
+  //Tell me a joke
+  ["tell me a joke", "know any jokes", "know any good jokes", "make me laugh"],
+  ["who's there","whos there"],
+  ["spell who"]
   //Comedic
-  ["haha","ha","lol","hehe","funny","joke"]
+  ["hahaha","haha","ha","lol","hehe","funny","joke","pun"]
 ]
 
 // Possible responses, in corresponding order, to the prompts listed above
 
 const responses = [
   //Greetings
-  ["Hello!", "Hi!", "Hey!", "Hi there!","Howdy"],
-  //Personal questions
+  [
+    "Hello!",
+    "Hi!",
+    "Hey!",
+    "Hi there!",
+    "Howdy",
+    "Greetings, friend",
+    "Salve, my friend!",
+    "Nice to see you!",
+    "Marhabaan. Greetings.",
+    "Shalom, good day."
+  ],
+  //How are you
   [
     "Fine... how are you?",
-    "Pretty well, how are you?",
-    "Fantastic, how are you?"
+    "Pretty well, how are you good fellow?",
+    "Fantastic, how are you my friend?",
+    "As good as I was at Rameses the Second's birthday party! How are you?"
   ],
   //Activity questions
   [
@@ -51,15 +67,31 @@ const responses = [
     "I don't know actually"
   ],
   //Age
-  ["It is somewhat impossible to know for sure how old I am.", "I do not know...", "Hmm... I am unsure."],
+  [
+    "It is somewhat impossible to know for sure how old I am.",
+    "I do not know...",
+    "Hmm... I am unsure.",
+    "Too old to be written in human number system..."
+  ],
   //What is Paul?
-  ["I am ApostleAI, a simple conversation bot coded in Javascript. But, you can call me Paul."],
+  ["I am ApostleAI, a simple conversation bot coded in Javascript at the begining of time. But, you can call me Paul."],
   //Makers
-  ["I was created by the Prophet-AI team."],
+  ["I was created by the Prophet-AI team. Who they are is beyond even me..."],
   //Name
   ["I am ApostleAi, but you can call me Paul for short."],
   //Test
   ["Respond!"],
+  //Tell me a joke
+  [
+    "Knock knock",
+    "What's the best thing a about Switzerland? I don't know, but the flag is a big plus!",
+    "I invented a new word! Plagiarism!",
+    "Did you hear atoms have mass? I didn't even know they were religious!",
+    "How does Moses make tea? He brews it!",
+    "What do you call a fake noodle? An impasta!"
+  ],
+  ["Spell."]
+  ["W - H - O!"]
   //Comedic
-  ["Haha!","Good one!"]
+  ["Haha!","Good one!", "I haven't heard a joke that funny since Rome!"]
 ]
