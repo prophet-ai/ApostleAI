@@ -1,6 +1,6 @@
 // Welcome to the initial brains of ApostleAI
 
-// Whenver the window loads, this function will run to automatically send an intro message from the bot.
+// Whenever the window loads, this function will run to automatically send an intro message from the bot.
 window.onload = function () {
   let intro =
     "Greetings young disciple! I am ApostleAI, a simple conversation bot coded in Javascript at the begining of time. But, you can call me Paul. You can ask me questions about the world, your future, or more! Give it a try!";
@@ -39,8 +39,8 @@ function sendUserMessage(input) {
   // Creates a div for the message, propogates it with the necessary information and then appends it to the messages div
   let userMessageDiv = document.createElement("div");
   userMessageDiv.id = "user";
-  userMessageDiv.className = "user response";
-  userMessageDiv.innerHTML = `<img src="assets/user.png" class="avatar"><span id="msgSpan">${input}</span>`; // This includes an image for the user (in assets/)
+  userMessageDiv.className = "user response box sb1";
+  userMessageDiv.innerHTML = `<span id="msgSpan">${input}</span><img src="assets/user.png" class="avatar">`; // This includes an image for the user (in assets/)
   messagesContainer.appendChild(userMessageDiv);
 
   // Keep the most recent message at the bottom and pushes old ones up
@@ -65,10 +65,10 @@ function sendBotMessage(input) {
   botMessageDiv.id = "bot";
   botMessageImg.src = "assets/paul.jpg";
   botMessageImg.className = "avatar";
-  botMessageDiv.className = "bot response";
+  botMessageDiv.className = "bot response box sb2";
   botMessageText.innerText = "Thinking...";
-  botMessageDiv.appendChild(botMessageText);
   botMessageDiv.appendChild(botMessageImg);
+  botMessageDiv.appendChild(botMessageText);
   messagesContainer.appendChild(botMessageDiv);
 
   // Keep the most recent message at the bottom and pushes old ones up
@@ -77,7 +77,7 @@ function sendBotMessage(input) {
 
   // Dummy delay to make it appear like the bot is 'thinking'
   setTimeout(() => {
-    botMessageText.innerText = `${product}`;
+    botMessageText.innerText = `${input}`;
   }, 1000
   )
 
