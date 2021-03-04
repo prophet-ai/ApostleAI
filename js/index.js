@@ -87,8 +87,11 @@ function sendBotMessage(input, delay) {
   messagesContainer.scrollHeight - messagesContainer.clientHeight;
 
   // Dummy delay to make it appear like the bot is 'thinking'
-  if(delay != 0)
-    var delay = 1000;
+  if(delay == null){
+    delay = input.length * 100;
+    if(delay > 6000)
+      delay = 6000;
+  }
   
   setTimeout(() => {
     botMessageText.innerText = `${input}`;
