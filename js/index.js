@@ -3,7 +3,7 @@
 // Whenever the window loads, this function will run to automatically send an intro message from the bot.
 window.onload = function () {
   let intro =
-    "Greetings young disciple! I am ApostleAI, a simple conversation bot coded in Javascript at the begining of time. But, you can call me Paul. You can ask me questions about the world, your future, or more! Give it a try!";
+    "Greetings young disciple! I am ApostleAI, a simple conversation bot coded in Javascript at the begining of time. But, you can call me Paul. I do not do very much as of yet, but that is about to change very soon!";
   sendBotMessage(intro, 0);
 };
 
