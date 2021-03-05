@@ -5,6 +5,9 @@
 *
 */
 
+// Imports
+import * as SaveFunction from "/js/saveChat.js";
+
 // Function to display the bot's message in the message box on the html page
 export function sendMessage(input, delay) {
   const messagesContainer = document.getElementById("messages");
@@ -23,9 +26,8 @@ export function sendMessage(input, delay) {
   botMessageDiv.appendChild(botMessageText);
   messagesContainer.appendChild(botMessageDiv);
   
-  //CHANGE THIS ONCE WE THE BOT STARTS OUTPUTTING REAL RESPONSES!!!!!!!!!!!!!!!
-  //chatLog += "\nApostleAI: " + input;
-  //saveButton.href = saveChatLog(chatLog);
+  //Add the bot's response to the chat log.
+  SaveFunction.saveChatLog("ApostleAI: " + input);
   
   // Keep the most recent message at the bottom and pushes old ones up
   messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
