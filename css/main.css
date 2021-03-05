@@ -73,7 +73,7 @@ body {
   font-weight: 100;
   font-size: 25px;
   color: #ffffff;
-  text-shadow: 0 1px 0 black;
+  mix-blend-mode:difference;
   font-family: 'Carrois Gothic', sans-serif;
 }
 
@@ -85,45 +85,45 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  margin-top: 4.5em;
+  margin-top: 4.5em;    
   text-align: center;
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 75px;
 }
 
-.title:before {
-  content: "APOSTLE";
+.title:before{
+  content: 'APOSTLE';
   color: white;
   font-size: 1.25em;
 }
 
-.title:after {
-  content: "AI";
-  color: #c0392b;
+.title:after{
+  content: 'AI';
+  color: #c0392b; 
 }
 
 .messageContainer {
   bottom: 20px;
   left: 25%;
-  position: absolute;
+  position:absolute;
 }
 
 .chat {
-  height: 350px;
-  width: 50vw;
-  display: flex;
-  flex-direction: column;
+	height: 350px;
+	width: 50vw;
+	display: flex;
+	flex-direction: column;
   justify-content: center;
-  align-items: center;
-}
-
-input {
-  border: 0;
-  padding: 15px;
-  margin: 1em;
-  border-radius: 10px;
-  width: 30%;
-  background-color: rgba(0, 0, 0, 0.55);
+	align-items: center;
+} 
+ 
+input { 
+	border: 0; 
+	padding: 15px;
+  margin: 1em; 
+	border-radius: 10px;
+  width: 30%; 
+  background-color: rgba(0,0,0,0.55);
   color: white;
 }
 input::placeholder {
@@ -131,63 +131,56 @@ input::placeholder {
 }
 
 button {
-  background-color: rgba(0, 0, 0, 0.55);
+  background-color: rgba(0,0,0,0.55);
   color: white;
-  margin: 2px;
 }
 
 #msgSpan {
-  padding-right: 15px;
-  padding-left: 15px;
+	padding-right: 15px;
+	padding-left: 15px;
+  
 }
+
 
 .messages {
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-  height: 90%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.55);
-  padding: 15px;
-  margin: 15px;
-  border-radius: 10px;
-  overflow-y: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.messages::-webkit-scrollbar {
-  /* WebKit */
-  width: 0;
-  height: 0;
+	display: flex;
+	flex-direction: column;
+	overflow: scroll;
+	height: 90%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.55);
+	padding: 15px;
+	margin: 15px;
+	border-radius: 10px;
 }
 
 #user {
-  margin-left: auto;
+	margin-left: auto;
 }
 
 .bot {
-  font-family: "Carrois Gothic", sans-serif;
+	font-family: 'Carrois Gothic', sans-serif;
 }
 
 .avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+	height: 35px;
 }
 
 .response {
-  display: flex;
-  align-items: center;
-  margin: 1%;
+	display: flex;
+	align-items: center;
+	margin: 1%;
   font-size: 20px;
-  font-family: "Carrois Gothic", sans-serif;
+  font-family: 'Carrois Gothic', sans-serif;
   color: white;
-  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 .box {
-  background: #c03a2b88;
+  background: #00bfb583;
   padding: 10px;
   color: #fff;
   position: relative;
@@ -196,21 +189,21 @@ button {
 .sb1:before {
   content: "";
   position: absolute;
-  border-left: 10px solid #c03a2b88;
+  border-left: 10px solid #00bfb583;
   border-right: 10px solid transparent;
-  border-top: 10px solid #c03a2b88;
+  border-top: 10px solid #00bfb583;
   border-bottom: 10px solid transparent;
-  right: -20px;
-  top: 8px;
+  right: -19px;
+  top: 6px;
 }
 
 .sb2:before {
   content: "";
   position: absolute;
   border-left: 10px solid transparent;
-  border-right: 10px solid #c03a2b88;
-  border-top: 10px solid #c03a2b88;
+  border-right: 10px solid #00bfb583;
+  border-top: 10px solid #00bfb583;
   border-bottom: 10px solid transparent;
-  left: -20px;
-  top: 8px;
+  left: -19px;
+  top: 6px;
 }
