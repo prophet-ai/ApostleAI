@@ -20,19 +20,3 @@ window.onload = function () {
   let intro ="Greetings young disciple! I am ApostleAI, a simple conversation bot coded in Javascript at the begining of time. But, you can call me Paul. You can ask me questions about the world, your future, or more! Give it a try!";
   Bot.sendMessage(intro, 0);
 };
-
-var textFile = null,
-saveChatLog = function (text) {
-  var data = new Blob([text], {type: 'text/plain'});
-
-  // If we are replacing a previously generated file we need to
-  // manually revoke the object URL to avoid memory leaks.
-  if (textFile !== null) {
-    window.URL.revokeObjectURL(textFile);
-  }
-
-  textFile = window.URL.createObjectURL(data);
-
-  // returns a URL you can use as a href
-  return textFile;
-};
