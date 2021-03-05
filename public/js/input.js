@@ -7,12 +7,10 @@
 
 // imports
 import * as Bot from "/js/bot.js";
+import * as SaveFunction from "/js/saveChat.js";
 
 // Isolate the chatButton element from index.html
 var sendChat = document.getElementById("chatButton");
-// Variables used to save a chat log
-var saveButton = document.getElementById("saveChat");
-var chatLog = "ApostleAI Chat Log\n";
 
 // Handle USER INPUT
 // This function will run when the chatButton is clicked on the html page.
@@ -21,6 +19,8 @@ sendChat.onclick = function () {
     // Then passes the input into the generateResponse function
     const inputField = document.getElementById("input");
     let input = inputField.value;
+    //Save to chat log
+    SaveFunction.saveChatLog("You: " + input);
     inputField.value = "";
     sendUserMessage(input);
   };
@@ -32,6 +32,8 @@ document.addEventListener("keyup", function (event) {
     if (event.keyCode === 13) {
       const inputField = document.getElementById("input");
       let input = inputField.value;
+      //Save to chat log
+      SaveFunction.saveChatLog("You: " + input);
       inputField.value = "";
       sendUserMessage(input);
     }
@@ -61,4 +63,3 @@ function sendUserMessage(input) {
       Bot.generateResponse(input);
     }, 1000);
   }
-  
