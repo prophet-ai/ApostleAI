@@ -7,6 +7,10 @@
 
 // Imports
 import * as SaveFunction from "/js/saveChat.js";
+import {prompts} from "/js/Lexicon.js";
+import {responses} from "/js/Lexicon.js";
+import {alternative} from "/js/Lexicon.js";
+
 
 // Function to display the bot's message in the message box on the html page
 export function sendMessage(input, delay) {
@@ -41,6 +45,7 @@ export function sendMessage(input, delay) {
 
 // Generate Response
 export function generateResponse(input) {
+  
   const messagesContainer = document.getElementById("messages");
 
   // Product holds what the bot will send back to the user in a message
@@ -53,10 +58,36 @@ export function generateResponse(input) {
     .replace(/[\d]/gi, "")
     .trim();
 
-  // Currently the bot will just type out your input after it is 'cleaned up' in the line above.
   // This is where the bot will decide what to respond with.
-  product = text;
+  if (compare(prompts, responses, text)) { 
+    // Search for exact match in `prompts`
+    product = compare(prompts, responses, text);
+  } else {
+    // If all else fails, pick a random alternative
+    product = alternative[Math.floor(Math.random() * alternative.length)];
+  }
 
   // Passes the  bot-generated product to the sendBotMessage function to be displayed on the html page
-  sendMessage(input);
+  sendMessage(product);
+}
+
+export function compare(promptsArray, responsesArray, string) {
+  let reply;
+  let replyFound = false;
+  for (let x = 0; x < promptsArray.length; x++) {
+    for (let y = 0; y < promptsArray[x].length; y++) {
+      if (promptsArray[x][y] === string) {
+        let responses = responsesArray[x];
+        reply = responses[Math.floor(Math.random() * responses.length)];
+        replyFound = true;
+        // Stop inner loop when input value matches prompts
+        break;
+      }
+    }
+    if (replyFound) {
+      // Stop outer loop when reply is found instead of interating through the entire array
+      break;
+    }
+  }
+  return reply;
 }
