@@ -51,15 +51,25 @@ export const prompts = [
   //Test
   [""],
   //Tell me a joke
-  ["tell me a joke", "know any jokes", "know any good jokes", "make me laugh"],
+  [
+    "tell me a joke",
+    "know any jokes",
+    "know any good jokes",
+    "make me laugh",
+    "tell me another joke",
+  ],
   ["who's there", "whos there"],
   ["spell who"],
   //Comedic
   ["hahaha", "haha", "ha", "lol", "hehe", "funny", "joke", "pun"],
   //Life Questions
-  ["what is life", "meaning of life"],
+  ["what is life", "what is the meaning of life"],
   //Purpose Questions
-  ["what is my purpose", "purpose of life", "purpose of living"],
+  [
+    "what is my purpose",
+    "what is the purpose of life",
+    "what is the purpose of living",
+  ],
   //Goodbye
   [
     "bye",
@@ -76,7 +86,7 @@ export const prompts = [
     "peace out",
   ],
   //Advice
-  ["advice", "wisdom", "knowledge", "truth"],
+  ["i need advice", "i need wisdom", "i need knowledge", "i need truth"],
   //Motivation
   [
     "motivate me",
@@ -84,17 +94,14 @@ export const prompts = [
     "give motivation",
     "motivational",
     "tell me something motivational",
+    "more motivation",
   ],
   //The end
   [
-    "end times",
-    "endtimes",
-    "end time",
-    "endtime",
-    "apocolypse",
-    "end",
-    "die",
-    "death",
+    "tell me about the end times",
+    "tell me about the apocolypse",
+    "tell me about the end",
+    "what is death",
   ],
   //General Advice
   ["give me advice"],
@@ -108,7 +115,6 @@ export const responses = [
     "Hi!",
     "Hey!",
     "Hi there!",
-    "Howdy",
     "Greetings, friend",
     "Salve, my friend!",
     "Nice to see you!",
@@ -117,10 +123,10 @@ export const responses = [
   ],
   //How are you
   [
-    "Fine... how are you?",
-    "Pretty well, how are you good fellow?",
-    "Fantastic, how are you my friend?",
-    "As good as I was at Rameses the Second's birthday party! How are you?",
+    "Fine...",
+    "Pretty well.",
+    "Fantastic.",
+    "As good as I was at Rameses the Second's birthday party!",
   ],
   //Activity questions
   [
@@ -140,11 +146,12 @@ export const responses = [
   //What is Paul?
   [
     "I am ApostleAI, a simple conversation bot coded in Javascript at the begining of time. But, you can call me Paul.",
+    "I am ApostleAI, and I am definitely not human.",
   ],
   //Makers
   ["I was created by the Prophet-AI team. Who they are is beyond even me..."],
   //Name
-  ["I am ApostleAi, but you can call me Paul for short."],
+  ["I am ApostleAI, but you can call me Paul for short."],
   //Test
   ["Respond!"],
   //Tell me a joke
@@ -193,21 +200,24 @@ export const responses = [
   //The end
   [
     "It is best not to dwell on the future. Make the most of the time we do have.",
-    "After finishing any good book or movie, remember to dwell on your thoughts",
-    "Remember where you came from, and where you want to go...",
     "Eveyone dies eventually!",
+    "Death is the circle of life.",
+    "Don't be afraid of that.",
   ],
 
   //General Advice
-  ["Be good"],
+  [
+    "Be good",
+    "Don't steal",
+    "Don't harm other people",
+    "Be kind to one another",
+  ],
 ];
 
 // Random responses when bot can't find a response
-export const alternative = [
-  "Same bro",
-  "Go on... this is interesting",
-  "Bro... what?",
-  "Try again nerd",
-  "I'm listening... maybe",
-  "I don't understand bud",
+export const other = [
+  "I don't understand.",
+  "I don't know anything about that.",
+  "I don't understand, let's talk about the meaning of life.",
+  "That didn't make sense to me.",
 ];
