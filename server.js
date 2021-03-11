@@ -12,9 +12,14 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
-// viewed at http://localhost:8080
+// index
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
+});
+
+// viewed at hostname:8080/talkingpoints
+app.get('/talkingpoints', function(req, res){
+    res.sendFile(path.join(__dirname + '/talkingpoints.txt'));
 });
 
 // allow the app to use the static library for public facing assets
