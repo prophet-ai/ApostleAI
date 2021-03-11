@@ -61,5 +61,5 @@ The list of available responses / queries for the bot to handle/use export list:
 ---
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/The_Predication_of_Saint_Paul_LACMA_M.2000.179.24.jpg/800px-The_Predication_of_Saint_Paul_LACMA_M.2000.179.24.jpg)
 
-### Thankfully brought to you by The Prophet-AI team 👁⃤
+### Happily brought to you by The Prophet-AI team 👁⃤
 ![alt text](https://avatars.githubusercontent.com/u/78770750?s=200&v=4)
