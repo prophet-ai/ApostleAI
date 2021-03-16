@@ -54,7 +54,7 @@ function sendUserMessage(input) {
     userMessageDiv.innerHTML = `<span id="msgSpan">${input}</span><img src="assets/user.png" class="avatar">`; // This includes an image for the user (in assets/)
     messagesContainer.appendChild(userMessageDiv);
   
-    // Keep the most recent message at the bottom and pushes old ones up
+    // Keep the most recent message at the bottom and pushes old ones up to mimic a chat
     messagesContainer.scrollTop =
       messagesContainer.scrollHeight - messagesContainer.clientHeight;
   
