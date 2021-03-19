@@ -10,6 +10,7 @@ import * as SaveFunction from "/js/saveChat.js";
 import { prompts } from "/js/Lexicon.js";
 import { responses } from "/js/Lexicon.js";
 import { other } from "/js/Lexicon.js";
+import * as InputCorrection from "/js/inputCorrection.js";
 
 // Function to display the bot's message in the message box on the html page
 export function sendMessage(input, delay) {
@@ -55,6 +56,9 @@ export function generateResponse(input) {
     .toLowerCase()
     .trim()
     .replace(/[^\w\s]/gi, "");
+
+  // Passes text to inputCorrection.js to fix spelling mistakes
+  text = InputCorrection.porterStemmer(text);
 
   // This is where the bot will decide what to respond with.
   if (pickReply(prompts, responses, text)) {
