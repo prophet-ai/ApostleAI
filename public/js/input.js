@@ -17,26 +17,28 @@ var sendChat = document.getElementById("chatButton");
 sendChat.onclick = function () {
     // Isolates the input field on the html page, saves to 'input' and then wipes the field.
     // Then passes the input into the generateResponse function
-    const inputField = document.getElementById("input");
+    const inputField = document.getElementById("message");
     let input = inputField.value;
-    //Save to chat log
+
     SaveFunction.saveChatLog("You: " + input);
     inputField.value = "";
     sendUserMessage(input);
-  };
+};
 
 // Checks for any key releases on 'Enter' key
 // Isolates the input field on the html page, saves to 'input' and then wipes the field.
 // Then passes the input into the generateResponse function
 document.addEventListener("keyup", function (event) {
-    if (event.keyCode === 13) {
-      const inputField = document.getElementById("input");
-      let input = inputField.value;
-      //Save to chat log
-      SaveFunction.saveChatLog("You: " + input);
-      inputField.value = "";
-      sendUserMessage(input);
-    }
+  if (event.keyCode === 13) {
+    // Isolates the input field on the html page, saves to 'input' and then wipes the field.
+    // Then passes the input into the generateResponse function
+    const inputField = document.getElementById("message");
+    let input = inputField.value;
+
+    SaveFunction.saveChatLog("You: " + input);
+    inputField.value = "";
+    sendUserMessage(input);
+  }
 });
 
 // Function to display the user's message in the message box on the html page
@@ -60,6 +62,24 @@ function sendUserMessage(input) {
   
     // Passes the input to generateResponse function after 1 second (this gives the user a chance to send another message )
     setTimeout(function () {
-      Bot.generateResponse(input);
+      // ajax call to pass the bot information from wit ai
+      $.ajax({
+        type: 'GET',
+        headers: {
+          // the authorization header just to be seperated as this is exposed to the public atm
+          // not a huge deal considering the private repo but this is bad practice
+          'Authorization' : 'Bearer ' + 'HPQZ4RCIONLKOEFXTMXAW5XWFMI4EE5I'
+        },
+        url: 'https://api.wit.ai/message',
+        data: {q: input},
+        contentType: 'json',
+        success: function(data){
+          // output the witai response to the console
+          console.log(data);
+          // Save the wit ai response to the console
+          SaveFunction.saveChatLog("\n[WITAI RESPONSE TO] '" + input + "' -> " + JSON.stringify(data) + "\n");
+          Bot.generateResponse(input);
+        }
+      })
     }, 1000);
   }

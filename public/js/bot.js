@@ -67,6 +67,7 @@ export function generateResponse(input) {
 
   // Passes the  bot-generated result to the sendBotMessage function to be displayed on the html page
   sendMessage(result);
+  console.log(result);
 }
 
 // Function to go through the lexicon.js and pick a response to the user's input

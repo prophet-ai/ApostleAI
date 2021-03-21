@@ -9,8 +9,13 @@
 */
 
 var express = require('express');
-var app = express();
 var path = require('path');
+var app = express();
+
+// middleware
+app.use(express.urlencoded({
+  extended: true
+}));
 
 // index
 app.get('/', function(req, res) {
