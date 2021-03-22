@@ -78,7 +78,12 @@ function sendUserMessage(input) {
           console.log(data);
           // Save the wit ai response to the console
           SaveFunction.saveChatLog("\n[WITAI RESPONSE TO] '" + input + "' -> " + JSON.stringify(data) + "\n");
-          Bot.generateResponse(input);
+          
+          //send the returned data from wit to the parser here
+
+          //send response from parser to generateResponse
+
+          Bot.generateResponse(data);
         }
       })
     }, 1000);

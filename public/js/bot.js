@@ -7,9 +7,8 @@
 
 // Imports
 import * as SaveFunction from "/js/saveChat.js";
-import { prompts } from "/js/Lexicon.js";
-import { responses } from "/js/Lexicon.js";
-import { other } from "/js/Lexicon.js";
+import { responses } from "/js/scripture.js";
+import { unknown } from "/js/scripture.js";
 
 // Function to display the bot's message in the message box on the html page
 export function sendMessage(input, delay) {
@@ -49,47 +48,47 @@ export function generateResponse(input) {
   // Product holds what the bot will send back to the user in a message
   let result;
 
-  // Regex to remove non word/space characters, trim trailing whitespce, and remove digits. (Note: this means the bot can't read numbers, this is intentional.)
-  let text = input
-    .replace(/[\d]/gi, "")
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s]/gi, "");
-
-  // This is where the bot will decide what to respond with.
-  if (pickReply(prompts, responses, text)) {
-    // Search for exact match in `prompts`
-    result = pickReply(prompts, responses, text);
-  } else {
-    // If all else fails, pick a random alt
-    result = other[Math.floor(Math.random() * other.length)];
+  for (let index = 0; index < input.intents.length; index++) {
+    console.log("Intents: " + input.intents[index].name);
   }
 
+  if (!input.intents.length) {
+    result = "Couldn't find an intent.";
+  } else {
+    result = input.intents[0].name;
+  }
+
+  result = pickReply(input, responses);
   // Passes the  bot-generated result to the sendBotMessage function to be displayed on the html page
   sendMessage(result);
   console.log(result);
 }
 
 // Function to go through the lexicon.js and pick a response to the user's input
-export function pickReply(prompts, responses, userInput) {
-  let botReply;
+export function pickReply(input, responses) {
+  let botReply = "okay";
   let gotReply = false;
-  
-  for (let x = 0; x < prompts.length; x++) {
-    for (let y = 0; y < prompts[x].length; y++) {
-      if (prompts[x][y] === userInput) {
-        // Found a matching reply
-        let response = responses[x];
-        botReply = response[Math.floor(Math.random() * response.length)];
-        gotReply = true;
-        // Stop inner loop when a reply is found
-        break;
-      }
-    }
-    if (gotReply) {
-      // Stop outer loop when reply is found
+
+  // for (let index = 0; index < responses.length; index++) {
+  //   if (responses[index].name == input) {
+  //     console.log("Yes");
+  //     botReply = "Yes";
+  //   } else {
+  //     console.log("No");
+  //     botReply = "No";
+  //   }
+  // }
+
+
+  var keys = Object.keys(responses);
+  for (let i = 0; i < keys.length; i++) {
+    if (input.intents[0].name == keys[i]) {
+      botReply = keys[i].data;
       break;
+    } else {
+      botReply = "No reply found";
     }
   }
+
   return botReply;
 }
