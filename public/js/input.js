@@ -8,6 +8,7 @@
 // imports
 import * as Bot from "/js/bot.js";
 import * as SaveFunction from "/js/saveChat.js";
+import * as PorterStemmer from "/js/porterStemming.js";
 
 // Isolate the chatButton element from index.html
 var sendChat = document.getElementById("chatButton");
@@ -19,8 +20,6 @@ sendChat.onclick = function () {
     // Then passes the input into the generateResponse function
     const inputField = document.getElementById("input");
     let input = inputField.value;
-    //Save to chat log
-    SaveFunction.saveChatLog("You: " + input);
     inputField.value = "";
     sendUserMessage(input);
   };
@@ -32,8 +31,6 @@ document.addEventListener("keyup", function (event) {
     if (event.keyCode === 13) {
       const inputField = document.getElementById("input");
       let input = inputField.value;
-      //Save to chat log
-      SaveFunction.saveChatLog("You: " + input);
       inputField.value = "";
       sendUserMessage(input);
     }
@@ -42,10 +39,12 @@ document.addEventListener("keyup", function (event) {
 // Function to display the user's message in the message box on the html page
 function sendUserMessage(input) {
     const messagesContainer = document.getElementById("messages");
-  
-    //Add the user's message to the chat log
-    //chatLog += "\nUser: " + input;
-    //saveButton.href = saveChatLog(chatLog);
+
+    //Error correction
+    input = PorterStemmer.textInput(input);
+
+    //Save to chat log
+    SaveFunction.saveChatLog("You: " + input);
   
     // Creates a div for the message, propogates it with the necessary information and then appends it to the messages div
     let userMessageDiv = document.createElement("div");
