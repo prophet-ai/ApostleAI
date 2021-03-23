@@ -45,6 +45,34 @@ export function sendMessage(input, delay) {
 
 // Generate Response
 export function generateResponse(input) {
+  
+  console.log("here");
+  setTimeout(function () {
+    // ajax call to pass the bot information from wit ai
+    $.ajax({
+      type: "GET",
+      headers: {
+        // the authorization header just to be seperated as this is exposed to the public atm
+        // not a huge deal considering the private repo but this is bad practice
+        Authorization: "Bearer " + "HPQZ4RCIONLKOEFXTMXAW5XWFMI4EE5I",
+      },
+      url: "https://api.wit.ai/message",
+      data: { q: input },
+      contentType: "json",
+      success: function (data) {
+        // output the witai response to the console
+        console.log("[WITAI RESPONSE]: " + JSON.stringify(data));
+        // Save the wit ai response to the console
+
+        //send the returned data from wit to the parser here
+
+        //send response from parser to generateResponse
+
+        input = data;
+      },
+    });
+  }, 1000);
+
   // Product holds what the bot will send back to the user in a message
   let result;
 

@@ -1,14 +1,26 @@
 /*
-*   INPUT.JS
-*   All input handling should go in this file.
-*   Things to do with front end communication and user interaction
-*
-*/
+ *   INPUT.JS
+ *   All input handling should go in this file.
+ *   Things to do with front end communication and user interaction
+ *
+ */
 
 // imports
 import * as Bot from "/js/bot.js";
 import * as SaveFunction from "/js/saveChat.js";
 import * as PorterStemmer from "/js/porterStemming.js";
+
+window.onload = function () {
+  let intro =
+    "Greetings young disciple! I am ApostleAI, a simple conversation bot coded in Javascript. You can talk to me about things like 'the meaning of life', your 'purpose', or even ask me about me! If you need some talking points, click the link above!";
+  Bot.sendMessage(intro, 0);
+};
+
+const ws = new WebSocket("ws://localhost:8082");
+
+ws.addEventListener("open", () => {
+  console.log("Connected to server!");
+});
 
 // Isolate the chatButton element from index.html
 var sendChat = document.getElementById("chatButton");
@@ -16,15 +28,15 @@ var sendChat = document.getElementById("chatButton");
 // Handle USER INPUT
 // This function will run when the chatButton is clicked on the html page.
 sendChat.onclick = function () {
-    // Isolates the input field on the html page, saves to 'input' and then wipes the field.
-    // Then passes the input into the generateResponse function
-  
-    const inputField = document.getElementById("message");
-    let input = inputField.value;
+  // Isolates the input field on the html page, saves to 'input' and then wipes the field.
+  // Then passes the input into the generateResponse function
 
-    SaveFunction.saveChatLog("You: " + input);
-    inputField.value = "";
-    sendUserMessage(input);
+  const inputField = document.getElementById("message");
+  let input = inputField.value;
+
+  SaveFunction.saveChatLog("You: " + input);
+  inputField.value = "";
+  sendUserMessage(input);
 };
 
 // Checks for any key releases on 'Enter' key
@@ -45,51 +57,25 @@ document.addEventListener("keyup", function (event) {
 
 // Function to display the user's message in the message box on the html page
 function sendUserMessage(input) {
-    const messagesContainer = document.getElementById("messages");
+  const messagesContainer = document.getElementById("messages");
 
-    //Error correction
-    input = PorterStemmer.textInput(input);
+  //Error correction
+  input = PorterStemmer.textInput(input);
 
-    //Save to chat log
-    SaveFunction.saveChatLog("You: " + input);
+  //Save to chat log
+  SaveFunction.saveChatLog("You: " + input);
 
-  
-    // Creates a div for the message, propogates it with the necessary information and then appends it to the messages div
-    let userMessageDiv = document.createElement("div");
-    userMessageDiv.id = "user";
-    userMessageDiv.className = "user response box sb1";
-    userMessageDiv.innerHTML = `<span id="msgSpan">${input}</span><img src="assets/user.png" class="avatar">`; // This includes an image for the user (in assets/)
-    messagesContainer.appendChild(userMessageDiv);
-  
-    // Keep the most recent message at the bottom and pushes old ones up to mimic a chat
-    messagesContainer.scrollTop =
-      messagesContainer.scrollHeight - messagesContainer.clientHeight;
-  
-    // Passes the input to generateResponse function after 1 second (this gives the user a chance to send another message )
-    setTimeout(function () {
-      // ajax call to pass the bot information from wit ai
-      $.ajax({
-        type: 'GET',
-        headers: {
-          // the authorization header just to be seperated as this is exposed to the public atm
-          // not a huge deal considering the private repo but this is bad practice
-          'Authorization' : 'Bearer ' + 'HPQZ4RCIONLKOEFXTMXAW5XWFMI4EE5I'
-        },
-        url: 'https://api.wit.ai/message',
-        data: {q: input},
-        contentType: 'json',
-        success: function(data){
-          // output the witai response to the console
-          console.log("[WITAI RESPONSE]: " + JSON.stringify(data));
-          // Save the wit ai response to the console
-          SaveFunction.saveChatLog("\n[WITAI RESPONSE TO] '" + input + "' -> " + JSON.stringify(data) + "\n");
-          
-          //send the returned data from wit to the parser here
+  // Creates a div for the message, propogates it with the necessary information and then appends it to the messages div
+  let userMessageDiv = document.createElement("div");
+  userMessageDiv.id = "user";
+  userMessageDiv.className = "user response box sb1";
+  userMessageDiv.innerHTML = `<span id="msgSpan">${input}</span><img src="assets/user.png" class="avatar">`; // This includes an image for the user (in assets/)
+  messagesContainer.appendChild(userMessageDiv);
 
-          //send response from parser to generateResponse
+  // Keep the most recent message at the bottom and pushes old ones up to mimic a chat
+  messagesContainer.scrollTop =
+    messagesContainer.scrollHeight - messagesContainer.clientHeight;
 
-          Bot.generateResponse(data);
-        }
-      })
-    }, 1000);
-  }
+  ws.send(input);
+  console.log("Sending '" + input + "' to socket server...");
+}

@@ -16,6 +16,6 @@ import * as Input from "/js/input.js";
 
 // Whenever the window loads, this function will run to automatically send an intro message from the bot.
 window.onload = function () {
-  let intro ="Greetings young disciple! I am ApostleAI, a simple conversation bot coded in Javascript. You can talk to me about things like 'the meaning of life', your 'purpose', or even ask me about me! If you need some talking points, click the link above!";
+  let intro ="red";
   Bot.sendMessage(intro, 0);
 };
