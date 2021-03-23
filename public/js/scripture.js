@@ -71,7 +71,7 @@ export const responses = {
   ],
 
   "philosophy":[
-    
+    "To exist is live"
   ],
   
   "wantMotivation":[
