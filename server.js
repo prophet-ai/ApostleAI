@@ -22,11 +22,6 @@ app.get("/talkingpoints", function (req, res) {
   res.sendFile(path.join(__dirname + "/talkingpoints.txt"));
 });
 
-// viewed at hostname:8080/parser
-app.get("/parser", function (req, res) {
-  res.sendFile(path.join(__dirname + "js/parser.js"));
-});
-
 // allow the app to use the static library for public facing assets
 app.use(express.static(__dirname + "/public"));
 
