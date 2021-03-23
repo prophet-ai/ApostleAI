@@ -7,9 +7,8 @@
 
 // Imports
 import * as SaveFunction from "/js/saveChat.js";
-import { prompts } from "/js/Lexicon.js";
-import { responses } from "/js/Lexicon.js";
-import { other } from "/js/Lexicon.js";
+import { responses } from "/js/scripture.js";
+import { unknown } from "/js/scripture.js";
 
 // Function to display the bot's message in the message box on the html page
 export function sendMessage(input, delay) {
@@ -49,46 +48,50 @@ export function generateResponse(input) {
   // Product holds what the bot will send back to the user in a message
   let result;
 
-  // Regex to remove non word/space characters, trim trailing whitespce, and remove digits. (Note: this means the bot can't read numbers, this is intentional.)
-  let text = input
-    .replace(/[\d]/gi, "")
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s]/gi, "");
-
-  // This is where the bot will decide what to respond with.
-  if (pickReply(prompts, responses, text)) {
-    // Search for exact match in `prompts`
-    result = pickReply(prompts, responses, text);
-  } else {
-    // If all else fails, pick a random alt
-    result = other[Math.floor(Math.random() * other.length)];
+  for (let index = 0; index < input.intents.length; index++) {
+    console.log("User Intent: " + input.intents[index].name);
   }
 
+  result = pickReply(input, responses);
   // Passes the  bot-generated result to the sendBotMessage function to be displayed on the html page
   sendMessage(result);
+  console.log("Bot Response: '" + result + "'");
 }
 
 // Function to go through the lexicon.js and pick a response to the user's input
-export function pickReply(prompts, responses, userInput) {
-  let botReply;
-  let gotReply = false;
-  
-  for (let x = 0; x < prompts.length; x++) {
-    for (let y = 0; y < prompts[x].length; y++) {
-      if (prompts[x][y] === userInput) {
-        // Found a matching reply
-        let response = responses[x];
-        botReply = response[Math.floor(Math.random() * response.length)];
-        gotReply = true;
-        // Stop inner loop when a reply is found
-        break;
-      }
-    }
-    if (gotReply) {
-      // Stop outer loop when reply is found
-      break;
+export function pickReply(input, responses) {
+  var botReply;
+  var replyFound;
+
+  if (input.intents[0] == null) {
+    console.log(
+      "Note: Could not find any intent in user input! Selecting generic 'unknown' response now... "
+    );
+    botReply = unknown[Math.floor(Math.random() * unknown.length)];
+    return botReply;
+  }
+
+  var keys = Object.keys(responses);
+  for (let i = 0; i < keys.length; i++) {
+    if (input.intents[0].name == keys[i]) {
+      console.log(
+        "Note: Found intent '" +
+          input.intents[0].name +
+          "' in scripture.js. Selecting corresponding reply now..."
+      );
+
+      var l = 3; // need to find a way to get the length of the array for each intent. this is a placeholder value for now.
+
+      botReply = responses[keys[i]][Math.floor(Math.random() * l)];
+      return botReply;
+    } else {
+      botReply = unknown[Math.floor(Math.random() * unknown.length)];
     }
   }
+  console.log(
+    "Note: Couldn't find intent '" +
+      input.intents[0].name +
+      "' in scripture.js. Selecting generic 'unknown' response now..."
+  );
   return botReply;
 }
