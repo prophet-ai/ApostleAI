@@ -38,7 +38,6 @@ export const responses = {
   ],
   
   "giveJoke":[
-    "Knock knock",
     "What's the best thing a about Switzerland? I don't know, but the flag is a big plus!",
     "I invented a new word! Plagiarism!",
     "Did you hear atoms have mass? I didn't even know they were religious!",
@@ -77,6 +76,12 @@ export const responses = {
     "Let your faith be bigger than your fears, have faith success will be near.",
     "The most important time in the world is the time you make for yourself.",
     "Logic will get you from A to B. Imagination will take you everywhere.",
+  ],
+
+  "meaningOfLife":[
+    "I could ask you the same thing, would you know the answer?",
+    "Trying to find meaning in life is hard. The real question is where should you search?",
+    "Maybe the meaning of life is in front of you right now, would you notice it?",
   ]
 };
 

@@ -75,7 +75,7 @@ function sendUserMessage(input) {
         contentType: 'json',
         success: function(data){
           // output the witai response to the console
-          console.log(data);
+          console.log("[WITAI RESPONSE]: " + JSON.stringify(data));
           // Save the wit ai response to the console
           SaveFunction.saveChatLog("\n[WITAI RESPONSE TO] '" + input + "' -> " + JSON.stringify(data) + "\n");
           

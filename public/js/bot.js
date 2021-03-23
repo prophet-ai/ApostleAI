@@ -49,46 +49,49 @@ export function generateResponse(input) {
   let result;
 
   for (let index = 0; index < input.intents.length; index++) {
-    console.log("Intents: " + input.intents[index].name);
-  }
-
-  if (!input.intents.length) {
-    result = "Couldn't find an intent.";
-  } else {
-    result = input.intents[0].name;
+    console.log("User Intent: " + input.intents[index].name);
   }
 
   result = pickReply(input, responses);
   // Passes the  bot-generated result to the sendBotMessage function to be displayed on the html page
   sendMessage(result);
-  console.log(result);
+  console.log("Bot Response: '" + result + "'");
 }
 
 // Function to go through the lexicon.js and pick a response to the user's input
 export function pickReply(input, responses) {
-  let botReply = "okay";
-  let gotReply = false;
+  var botReply;
+  var replyFound;
 
-  // for (let index = 0; index < responses.length; index++) {
-  //   if (responses[index].name == input) {
-  //     console.log("Yes");
-  //     botReply = "Yes";
-  //   } else {
-  //     console.log("No");
-  //     botReply = "No";
-  //   }
-  // }
-
+  if (input.intents[0] == null) {
+    console.log(
+      "Note: Could not find any intent in user input! Selecting generic 'unknown' response now... "
+    );
+    botReply = unknown[Math.floor(Math.random() * unknown.length)];
+    return botReply;
+  }
 
   var keys = Object.keys(responses);
   for (let i = 0; i < keys.length; i++) {
     if (input.intents[0].name == keys[i]) {
-      botReply = keys[i].data;
-      break;
+      console.log(
+        "Note: Found intent '" +
+          input.intents[0].name +
+          "' in scripture.js. Selecting corresponding reply now..."
+      );
+
+      var l = 3; // need to find a way to get the length of the array for each intent. this is a placeholder value for now.
+
+      botReply = responses[keys[i]][Math.floor(Math.random() * l)];
+      return botReply;
     } else {
-      botReply = "No reply found";
+      botReply = unknown[Math.floor(Math.random() * unknown.length)];
     }
   }
-
+  console.log(
+    "Note: Couldn't find intent '" +
+      input.intents[0].name +
+      "' in scripture.js. Selecting generic 'unknown' response now..."
+  );
   return botReply;
 }
