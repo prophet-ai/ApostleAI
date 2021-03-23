@@ -69,6 +69,10 @@ export const responses = {
     "The best time to plant a tree was 20 years ago. The second best time is now.",
     "Having vision is much more than just being visual.",
   ],
+
+  "philosophy":[
+    
+  ],
   
   "wantMotivation":[
     "There is nothing more important than this moment",
@@ -82,6 +86,7 @@ export const responses = {
     "I could ask you the same thing, would you know the answer?",
     "Trying to find meaning in life is hard. The real question is where should you search?",
     "Maybe the meaning of life is in front of you right now, would you notice it?",
+    "That is the question you have to find the answer to once you die."
   ]
 };
 
