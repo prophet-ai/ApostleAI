@@ -69,27 +69,19 @@ function stemmer(text) {
 		// Fix some common spelling errors
 		re = /tion|ae|izor|meant|uor|or|scei|icei|qau|qeu|ign|toin/;
 		//re = /scei/;
-		re2 = /(scie|icie)/;
-		re3 = /^(.+?)(cie)$/;
-		console.log(re.test(text));
+		re2 = /scie|icie/;
+		re3 = /cie/;
 		if (re.test(text)) {
 			console.log("This is a test");
 			var fp = re.exec(text);
-			console.log(fp);
-			console.log(fp[0]);
 			text = text.replace(fp[0], commonErrorList[fp[0]]);
 			// Ensure a 'cie' case is actually an error
 		} else if (re2.test(text)) {
 			// Nothing needs to be replaced in this case, just ensures we don't replace something fine
 		}
 		else if (re3.test(text)){
-			var fp = re.exec(text);
-			stem = fp[1];
-			suffix = fp[2];
-			re3 = new RegExp(mgr0);
-			if (re.test(stem)) {
-				text = stem + commonErrorList[suffix];
-			}
+			var fp = re3.exec(text);
+			text = text.replace(fp[0], commonErrorList[fp[0]]);
 		}
 
 		// and turn initial Y back to y
