@@ -9,7 +9,8 @@ export function textInput(sentenceIn) {
     var sentenceOut = "";
     var question = sentenceIn.endsWith("?");
     var exclamation = sentenceIn.endsWith("!");
-    for (i = 0; i < words.length; i++){
+	console.log(sentenceIn);
+    for (var i = 0; i < words.length; i++){
         sentenceOut += stemmer(words[i]);
         if (i+1 != words.length)
             sentenceOut += " ";
@@ -20,42 +21,23 @@ export function textInput(sentenceIn) {
         else
             sentenceOut += ".";
     }
+	console.log(sentenceOut);
     return sentenceOut;
 }
 
 function stemmer(text) {
-	var step2list = {
-			"ational" : "ate",
-			"tional" : "tion",
-			"enci" : "ence",
-			"anci" : "ance",
-			"izer" : "ize",
-			"bli" : "ble",
-			"alli" : "al",
-			"entli" : "ent",
-			"eli" : "e",
-			"ousli" : "ous",
-			"ization" : "ize",
-			"ation" : "ate",
-			"ator" : "ate",
-			"alism" : "al",
-			"iveness" : "ive",
-			"fulness" : "ful",
-			"ousness" : "ous",
-			"aliti" : "al",
-			"iviti" : "ive",
-			"biliti" : "ble",
-			"logi" : "log"
-		},
-
-		step3list = {
-			"icate" : "ic",
-			"ative" : "",
-			"alize" : "al",
-			"iciti" : "ic",
-			"ical" : "ic",
-			"ful" : "",
-			"ness" : ""
+	var commonErrorList = {
+			"toin" : "tion",
+			"ae" : "ea",
+			"izor" : "izer",
+			"meant" : "ment",
+			"uor" : "our",
+			"or" : "our",
+			"scei" : "scei",
+			"icei" : "icie",
+			"cie" : "cei",
+			"qau" : "qua",
+			"qeu" : "que"
 		},
 
 		c = "[^aeiou]",          // consonant
@@ -72,125 +54,32 @@ function stemmer(text) {
 			suffix,
 			firstch,
 			re,
-			re2,
-			re3,
-			re4;
+			re2;
 
-		if (text.length < 3) { return text; }
+		// Text being the word 'meant' is a special case, as the rest of the code will assume it's a suffix
+		if (text.length < 3 || text == "meant") { return text; }
 
 		firstch = text.substr(0,1);
 		if (firstch == "y") {
-			text = firstch.toUpperCase() + w.substr(1);
+			text = firstch.toUpperCase() + text.substr(1);
 		}
 
-		// Step 1a
-		re = /^(.+?)(ss|i)es$/;
-		re2 = /^(.+?)([^s])s$/;
-
-		if (re.test(text)) { text = text.replace(re,"$1$2"); }
-		else if (re2.test(text)) {	text = text.replace(re2,"$1$2"); }
-
-		// Step 1b
-		re = /^(.+?)eed$/;
-		re2 = /^(.+?)(ed|ing)$/;
-		if (re.test(text)) {
-			var fp = re.exec(text);
-			re = new RegExp(mgr0);
-			if (re.test(fp[1])) {
-				re = /.$/;
-				text = text.replace(re,"");
-			}
-		} else if (re2.test(text)) {
-			var fp = re2.exec(text);
-			stem = fp[1];
-			re2 = new RegExp(s_v);
-			if (re2.test(stem)) {
-				text = stem;
-				re2 = /(at|bl|iz)$/;
-				re3 = new RegExp("([^aeiouylsz])\\1$");
-				re4 = new RegExp("^" + C + v + "[^aeiouwxy]$");
-				if (re2.test(text)) {	text = text + "e"; }
-				else if (re3.test(text)) { re = /.$/; text = text.replace(re,""); }
-				else if (re4.test(text)) { text = text + "e"; }
-			}
-		}
-
-		// Step 1c
-		re = /^(.+?)y$/;
-		if (re.test(text)) {
-			var fp = re.exec(text);
-			stem = fp[1];
-			re = new RegExp(s_v);
-			if (re.test(stem)) { text = stem + "i"; }
-		}
-
-		// Step 2
-		re = /^(.+?)(ational|tional|enci|anci|izer|bli|alli|entli|eli|ousli|ization|ation|ator|alism|iveness|fulness|ousness|aliti|iviti|biliti|logi)$/;
+		// Fix some common spelling errors
+		re = /^(.+?)(tion|ae|izor|meant|uor|or|scei|icei)$/;
 		if (re.test(text)) {
 			var fp = re.exec(text);
 			stem = fp[1];
 			suffix = fp[2];
 			re = new RegExp(mgr0);
 			if (re.test(stem)) {
-				text = stem + step2list[suffix];
+				text = stem + commonErrorList[suffix];
 			}
-		}
-
-		// Step 3
-		re = /^(.+?)(icate|ative|alize|iciti|ical|ful|ness)$/;
-		if (re.test(text)) {
-			var fp = re.exec(text);
-			stem = fp[1];
-			suffix = fp[2];
-			re = new RegExp(mgr0);
-			if (re.test(stem)) {
-				text = stem + step3list[suffix];
-			}
-		}
-
-		// Step 4
-		re = /^(.+?)(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ou|ism|ate|iti|ous|ive|ize)$/;
-		re2 = /^(.+?)(s|t)(ion)$/;
-		if (re.test(text)) {
-			var fp = re.exec(text);
-			stem = fp[1];
-			re = new RegExp(mgr1);
-			if (re.test(stem)) {
-				text = stem;
-			}
-		} else if (re2.test(text)) {
-			var fp = re2.exec(text);
-			stem = fp[1] + fp[2];
-			re2 = new RegExp(mgr1);
-			if (re2.test(stem)) {
-				text = stem;
-			}
-		}
-
-		// Step 5
-		re = /^(.+?)e$/;
-		if (re.test(text)) {
-			var fp = re.exec(text);
-			stem = fp[1];
-			re = new RegExp(mgr1);
-			re2 = new RegExp(meq1);
-			re3 = new RegExp("^" + C + v + "[^aeiouwxy]$");
-			if (re.test(stem) || (re2.test(stem) && !(re3.test(stem)))) {
-				text = stem;
-			}
-		}
-
-		re = /ll$/;
-		re2 = new RegExp(mgr1);
-		if (re.test(text) && re2.test(text)) {
-			re = /.$/;
-			text = text.replace(re,"");
 		}
 
 		// and turn initial Y back to y
 
 		if (firstch == "y") {
-			text = firstch.toLowerCase() + w.substr(1);
+			text = firstch.toLowerCase() + text.substr(1);
 		}
 
 		return text;
