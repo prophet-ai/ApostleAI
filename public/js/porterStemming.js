@@ -33,11 +33,12 @@ function stemmer(text) {
 			"meant" : "ment",
 			"uor" : "our",
 			"or" : "our",
-			"scei" : "scei",
+			"scei" : "scie",
 			"icei" : "icie",
 			"cie" : "cei",
 			"qau" : "qua",
-			"qeu" : "que"
+			"qeu" : "que",
+			"ign" : "ing"
 		},
 
 		c = "[^aeiou]",          // consonant
@@ -54,7 +55,8 @@ function stemmer(text) {
 			suffix,
 			firstch,
 			re,
-			re2;
+			re2,
+			re3;
 
 		// Text being the word 'meant' is a special case, as the rest of the code will assume it's a suffix
 		if (text.length < 3 || text == "meant") { return text; }
@@ -65,12 +67,26 @@ function stemmer(text) {
 		}
 
 		// Fix some common spelling errors
-		re = /^(.+?)(tion|ae|izor|meant|uor|or|scei|icei)$/;
+		re = /tion|ae|izor|meant|uor|or|scei|icei|qau|qeu|ign|toin/;
+		//re = /scei/;
+		re2 = /(scie|icie)/;
+		re3 = /^(.+?)(cie)$/;
+		console.log(re.test(text));
 		if (re.test(text)) {
+			console.log("This is a test");
+			var fp = re.exec(text);
+			console.log(fp);
+			console.log(fp[0]);
+			text = text.replace(fp[0], commonErrorList[fp[0]]);
+			// Ensure a 'cie' case is actually an error
+		} else if (re2.test(text)) {
+			// Nothing needs to be replaced in this case, just ensures we don't replace something fine
+		}
+		else if (re3.test(text)){
 			var fp = re.exec(text);
 			stem = fp[1];
 			suffix = fp[2];
-			re = new RegExp(mgr0);
+			re3 = new RegExp(mgr0);
 			if (re.test(stem)) {
 				text = stem + commonErrorList[suffix];
 			}
