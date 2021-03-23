@@ -2,16 +2,21 @@
 //  which is based on the algorithm by Porter, 1980, An algorithm for suffix stripping, Program, Vol. 14,
 //  no. 3, pp 130-137
 
+// Use import * as PorterStemmer from "/js/porterStemming.js";
+
 export function textInput(sentenceIn) {
     var words = sentenceIn.match(/\b(\w+)\b/g);
     var sentenceOut = "";
     var question = sentenceIn.endsWith("?");
+    var exclamation = sentenceIn.endsWith("!");
     for (i = 0; i < words.length; i++){
         sentenceOut += stemmer(words[i]);
         if (i+1 != words.length)
             sentenceOut += " ";
-        if (i+1 == words.length && question)
+        else if (i+1 == words.length && question)
             sentenceOut += "?";
+        else if (i+1 == words.length && exclamation)
+            sentenceOut += "!";
         else
             sentenceOut += ".";
     }
