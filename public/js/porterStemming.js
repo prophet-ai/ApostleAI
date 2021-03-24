@@ -51,15 +51,16 @@ function stemmer(text) {
 		mgr1 = "^(" + C + ")?" + V + C + V + C,       // [C]VCVC... is m>1
 		s_v = "^(" + C + ")?" + v;                   // vowel in stem
 
-		var stem,
-			suffix,
-			firstch,
+		var firstch,
 			re,
 			re2,
 			re3;
 
 		// Text being the word 'meant' is a special case, as the rest of the code will assume it's a suffix
 		if (text.length < 3 || text == "meant") { return text; }
+
+		//Check each word a couple times in case of multiple errors
+		for (i=0; i<3; i++){
 
 		firstch = text.substr(0,1);
 		if (firstch == "y") {
@@ -89,6 +90,7 @@ function stemmer(text) {
 		if (firstch == "y") {
 			text = firstch.toLowerCase() + text.substr(1);
 		}
+	}
 
 		return text;
 	
