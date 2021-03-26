@@ -50,9 +50,6 @@ function sendUserMessage(input) {
     //Error correction
     input = PorterStemmer.textInput(input);
 
-    //Save to chat log
-    SaveFunction.saveChatLog("You: " + input);
-
   
     // Creates a div for the message, propogates it with the necessary information and then appends it to the messages div
     let userMessageDiv = document.createElement("div");
