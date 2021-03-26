@@ -35,6 +35,7 @@ function stemmer(text) {
 			"or" : "our",
 			"scei" : "scie",
 			"icei" : "icie",
+			"Scei" : "Scie",
 			"cie" : "cei",
 			"qau" : "qua",
 			"qeu" : "que",
@@ -60,7 +61,7 @@ function stemmer(text) {
 		if (text.length < 3 || text == "meant") { return text; }
 
 		//Check each word a couple times in case of multiple errors
-		for (i=0; i<3; i++){
+		for (var i=0; i<3; i++){
 
 		firstch = text.substr(0,1);
 		if (firstch == "y") {
@@ -68,9 +69,9 @@ function stemmer(text) {
 		}
 
 		// Fix some common spelling errors
-		re = /tion|ae|izor|meant|uor|or|scei|icei|qau|qeu|ign|toin/;
+		re = /tion|ae|izor|meant|uor|or|Scei|scei|icei|qau|qeu|ign|toin/;
 		//re = /scei/;
-		re2 = /scie|icie/;
+		re2 = /Scie|scie|icie/;
 		re3 = /cie/;
 		if (re.test(text)) {
 			console.log("This is a test");
