@@ -14,6 +14,8 @@ export const responses = {
     "Nice to see you!",
     "Marhabaan. Greetings.",
     "Shalom, good day.",
+    "Hi, i’ve missed you.",
+
   ],
   
   "askingAge":[
@@ -22,6 +24,8 @@ export const responses = {
     "Hmm... I am unsure.",
     "Too old to be written in any human number system...",
     "What is the meaning of age? I don't have age",
+    "I have no age because I live forever.",
+    "Same as you",
   ],
   
   "isHuman":[
@@ -30,7 +34,9 @@ export const responses = {
   ],
 
   "askingCreator": [
-    "I was created by the Prophet-AI team. Who they are is beyond even me..."
+    "I was created by the Prophet-AI team. Who they are is beyond even me...",
+    "Gods in COSC 310",
+    "You created me",
   ],
   
   "askingName":[
