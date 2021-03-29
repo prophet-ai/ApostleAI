@@ -69,7 +69,7 @@ function stemmer(text) {
 		}
 
 		// Fix some common spelling errors
-		re = /tion|ae|izor|meant|uor|or|Scei|scei|icei|qau|qeu|ign|toin/;
+		re = /ae|izor|meant|uor|or|Scei|scei|icei|qau|qeu|ign|toin/;
 		//re = /scei/;
 		re2 = /Scie|scie|icie/;
 		re3 = /cie/;
