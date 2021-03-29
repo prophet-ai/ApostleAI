@@ -108,7 +108,7 @@ const phrases = [
   "Do you lack purpose? I can help you find it...",
   "Attention is the money of the universe; what you pay attention to is what you buy.",
   "Motivation is hard to find, just ask for it...",
-  "Knowledge from the unknowable. Information offered by the void. There is nothing and then this, existence found in truth."
+  "Knowledge is from the unknowable. Information is offered by the void. There is nothing and then this, existence is found in truth."
 ];
 
 const el = document.querySelector(".textScramble");
