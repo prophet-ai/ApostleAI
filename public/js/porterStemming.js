@@ -21,7 +21,7 @@ export function textInput(sentenceIn) {
         else
             sentenceOut += ".";
     }
-	console.log(sentenceOut);
+	console.log("Porter Stemmer Output: " + sentenceOut);
     return sentenceOut;
 }
 
@@ -74,7 +74,6 @@ function stemmer(text) {
 		re2 = /Scie|scie|icie/;
 		re3 = /cie/;
 		if (re.test(text)) {
-			console.log("This is a test");
 			var fp = re.exec(text);
 			text = text.replace(fp[0], commonErrorList[fp[0]]);
 			// Ensure a 'cie' case is actually an error
