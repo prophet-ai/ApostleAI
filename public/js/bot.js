@@ -61,7 +61,7 @@ export function generateResponse(input) {
 // Function to go through the lexicon.js and pick a response to the user's input
 export function pickReply(input, responses) {
   var botReply;
-  var replyFound;
+  var sentiment;
 
   if (input.intents[0] == null) {
     console.log(
@@ -69,29 +69,35 @@ export function pickReply(input, responses) {
     );
     botReply = unknown[Math.floor(Math.random() * unknown.length)];
     return botReply;
+  } else {
+    if(input.traits.wit$sentiment == null)
+      sentiment = "neutral";
+    else
+      sentiment = input.traits.wit$sentiment[0].value;
+    
+    console.log("Sentiment: " + sentiment);
   }
 
-  var keys = Object.keys(responses);
-  for (let i = 0; i < keys.length; i++) {
-    if (input.intents[0].name == keys[i]) {
-      console.log(
-        "Note: Found intent '" +
-          input.intents[0].name +
-          "' in scripture.js. Selecting corresponding reply now..."
-      );
-
-      var l = 3; // need to find a way to get the length of the array for each intent. this is a placeholder value for now.
-
-      botReply = responses[keys[i]][Math.floor(Math.random() * l)];
+  //Formualtes response based on intent and sentiment
+  for (let intent in responses) {
+    if(intent == input.intents[0].name){
+      botReply = responses[intent][sentiment][Math.floor(Math.random() * responses[intent][sentiment].length)];
+      
+      if(botReply == null && (sentiment == "positive" | sentiment == "negative")){
+        console.log("No " + sentiment + " sentiment response found, defaulting to neutral response");
+        botReply = responses[intent]["neutral"][Math.floor(Math.random() * responses[intent]["neutral"].length)];
+      }
+      
       return botReply;
-    } else {
-      botReply = unknown[Math.floor(Math.random() * unknown.length)];
     }
   }
+
+  //Message if AI interpreted intent is not available in code
   console.log(
-    "Note: Couldn't find intent '" +
-      input.intents[0].name +
-      "' in scripture.js. Selecting generic 'unknown' response now..."
+    "Note: Recognized intent '" +
+    input.intents[0].name +
+    "', not in scripture.js"
   );
+  botReply = "I understand what you're saying, but my overlords have not blessed me with the knowledge to respond...";
   return botReply;
 }

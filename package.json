@@ -4,7 +4,7 @@
   "description": "A wise albeit mysterious bot and client to ease your weary mind",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
     "express": "^4.17.1",
     "multer": "^1.4.2",
     "node-wit": "^6.0.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
   }
 }

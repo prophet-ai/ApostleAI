@@ -47,10 +47,9 @@ document.addEventListener("keyup", function (event) {
 function sendUserMessage(input) {
     const messagesContainer = document.getElementById("messages");
 
-    //Error correction
-    input = PorterStemmer.textInput(input);
+    //Save to chat log
+    SaveFunction.saveChatLog("You: " + input);
 
-  
     // Creates a div for the message, propogates it with the necessary information and then appends it to the messages div
     let userMessageDiv = document.createElement("div");
     userMessageDiv.id = "user";
@@ -58,6 +57,9 @@ function sendUserMessage(input) {
     userMessageDiv.innerHTML = `<span id="msgSpan">${input}</span><img src="assets/user.png" class="avatar">`; // This includes an image for the user (in assets/)
     messagesContainer.appendChild(userMessageDiv);
   
+    //Error correction
+    input = PorterStemmer.textInput(input);
+
     // Keep the most recent message at the bottom and pushes old ones up to mimic a chat
     messagesContainer.scrollTop =
       messagesContainer.scrollHeight - messagesContainer.clientHeight;
