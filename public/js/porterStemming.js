@@ -7,7 +7,6 @@ function porterStemmingTest(sentenceIn){
 	return (textInput(sentenceIn));
 }
 
-
 function textInput(sentenceIn) {
     var words = sentenceIn.match(/\b(\w+)\b/g);
     var sentenceOut = "";
@@ -100,4 +99,4 @@ function stemmer(text) {
 	
 };
 
-module.exports = porterStemmingTest;
+module.exports = textInput;

@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A wise albeit mysterious bot and client to ease your weary mind",
   "main": "server.js",
+  "jest":{
+    "verbose":true,
+    "transformIgnorePatterns": ["/node_modules/(?!porterStemming)"]
+  },
   "scripts": {
     "test": "jest"
   },

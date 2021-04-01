@@ -1,6 +1,6 @@
-// import * as porterStemmer from '/js/porterStemming.js';
-const porterStemmer = require('./porterStemming');
+//import * as porterStemmingTest from "/js/porterStemming.js";
+const porterStemmingTest = require('./porterStemming');
 
 test('I like sceince', () =>{
-    expect(porterStemmer.porterStemmingTest('I like sceince')).toBe('I like science.');
+    expect(porterStemmingTest("I like sceince")).toMatch('I like science.');
 });
