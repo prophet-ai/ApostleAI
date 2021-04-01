@@ -3,10 +3,6 @@
 //  no. 3, pp 130-137
 
 // Use import * as PorterStemmer from "/js/porterStemming.js";
-function porterStemmingTest(sentenceIn){
-	return (textInput(sentenceIn));
-}
-
 function textInput(sentenceIn) {
     var words = sentenceIn.match(/\b(\w+)\b/g);
     var sentenceOut = "";
