@@ -13,7 +13,8 @@ export const responses = {
       "Nice to see you!",
       "Marhabaan. Greetings.",
       "Shalom, good day.",
-      "Hi, i’ve missed you."
+      "Hi, i’ve missed you.",
+      "How are you?"
     ],
     "neutral": [
       "Hello!",
@@ -21,7 +22,9 @@ export const responses = {
     ],
     "negative": [
       "Hello, are you doing ok?",
-      "Hi, do you seek guidance?"
+      "Hi, do you seek guidance?",
+      "Hey, what's wrong?"
+      
     ]
   },
   
@@ -51,6 +54,7 @@ export const responses = {
     "neutral": [
       "I am definitely not human... I think.",
       "I am ApostleAI, and I am definitely not human.",
+      "I am just a mere AI unlike you, a human. "
     ],
     "negative": [
       "I don't know, are you?"
@@ -80,6 +84,7 @@ export const responses = {
       "You can give me a name",
       "Call me by anything!",
       "I am apostle AI.",
+      "I am Saint Paul the Apostle!"
     ],
     "negative": [
 
@@ -108,7 +113,12 @@ export const responses = {
       
     ],
     "neutral": [
-      "I hope you feel better"
+      "I hope you feel better",
+      "I wish you the best",
+      "Get your heads up",
+      "It is okay to feel that way",
+      "Life will get better!",
+
     ],
     "negative": [
       "I am sad that you are sad",
@@ -134,6 +144,7 @@ export const responses = {
     "negative": [
       "Your purpose is to make yourself happy",
       "You must find the purpose of living. That’s the purpose of living",
+      "The happiness of your life depends upon the quality of your thoughts."
     ]
   },
 
@@ -147,6 +158,7 @@ export const responses = {
       "See you later!",
       "Have a good day.",
       "Have a good one.",
+      "See you!"
     ],
     "negative": [
       "Bye...",
@@ -167,7 +179,8 @@ export const responses = {
     "negative": [
       "Don’t limit yourself. Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve.",
       "Don't beat yourself up, self improvement starts now",
-      "Maybe now is not the time for advice, but some self introspection..."
+      "Maybe now is not the time for advice, but some self introspection...",
+      "Never let your sense of morals prevent you from doing what is right."
     ]
   },
 
@@ -177,8 +190,27 @@ export const responses = {
     ],
     "neutral": [
       "To exist is to live",
+      "Be the change that you wish to see in the world.",
+      "You talk when you cease to be at peace with your thoughts.",
+      "Hardship often prepares an ordinary person for an extraordinary destiny.",
+      "Every man is a creature of the age in which he lives and few are able to raise themselves above the ideas of the time.",
+      "Life is never made unbearable by circumstances, but only by lack of meaning and purpose.",
+      "The highest activity a human being can attain is learning for understanding, because to understand is to be free.",
+      "Wise men speak because they have something to say; fools because they have to say something.",
+      "The mind is furnished with ideas by experience alone.",
+      "It is not death that a man should fear, but he should fear never beginning to live."
+ 
+
+
+
     ],
     "negative": [
+      "A day without laughter is a day wasted.",
+      "Man is the only creature who refuses to be what he is",
+      "There is nothing either good or bad, but thinking makes it so.",
+      "The happiness of your life depends upon the quality of your thoughts.",
+      "Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth."
+
       
     ]
   },
