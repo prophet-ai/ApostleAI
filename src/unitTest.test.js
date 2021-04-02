@@ -1,7 +1,6 @@
 //import * as porterStemmingTest from "/js/porterStemming.js";
 const porterStemmingTest = require("./porterStemming");
 const {Wit, log} = require('node-wit');
-const config = require('./config');
 
 test("Wit.AI Intent Test", () => {
   const client = new Wit({ accessToken: "JPT6MY5E2CX4CJ2RXZ3JN3D7DIJS3Z4L" });
