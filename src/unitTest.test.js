@@ -2,10 +2,12 @@
 const porterStemmingTest = require("./porterStemming");
 const { Wit, log } = require("node-wit");
 const config = require('./config');
+const logger = require('./logger');
 
 test("Wit.AI Intent Test", () => {
   const client = new Wit({ accessToken: config.key });
-  client.message("what is the weather in London?", {})
+  console.log(logger.getTime() + "Sending test message 'What is the weather in London?' to Wit.AI API now...");
+  client.message("What is the weather in London?", {})
     .then((data) => {
       expect(data.intents[0].name).toMatch("wit$get_weather");
     })
@@ -14,6 +16,7 @@ test("Wit.AI Intent Test", () => {
 
 test("Wit.AI Sentiment Test", () => {
     const client = new Wit({ accessToken: config.key });
+    console.log(logger.getTime() + "Sending test message 'I feel sad' to Wit.AI API now...");
     client.message("I feel sad", {})
       .then((data) => {
         expect(data.traits.wit$sentiment[0].value).toMatch("negative");
