@@ -2,24 +2,14 @@
 const porterStemmingTest = require("./porterStemming");
 const {Wit, log} = require('node-wit');
 
-var inp = "hello";
-
-function callWit(e) {
-const client = new Wit({ accessToken: "JPT6MY5E2CX4CJ2RXZ3JN3D7DIJS3Z4L" });
-client
-  .message("what is the weather in London?", {})
-  .then((data) => {
-    return data.intents[0].name;
-  })
-  .catch(console.error);
-
-  return data.intents[0].name;
-
-};
-
-
 test("Wit.AI Test", () => {
-  expect(callWit()).toMatch("wit$get_weather");
+  const client = new Wit({ accessToken: "JPT6MY5E2CX4CJ2RXZ3JN3D7DIJS3Z4L" });
+  client.message("what is the weather in London?", {})
+    .then((data) => {
+      expect(data.intents[0].name).toMatch("wit$get_weather");
+      console.log(inp);
+    })
+    .catch(console.error);
 });
 
 //Tests if porter stemming is correcting words properly
