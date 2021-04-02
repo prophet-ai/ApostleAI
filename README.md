@@ -3,6 +3,7 @@
 ApostleAI is a conversation bot modeled after Paul the Apostle, commonly known as Saint Paul, an apostle who spread the teachings of Jesus in the first-century world.
 
 [![prophet-ai](https://circleci.com/gh/prophet-ai/ApostleAI/tree/automatic-unit-testing.svg?style=shield)](https://circleci.com/gh/prophet-ai/ApostleAI)
+[![prophet-ai](https://circleci.com/gh/prophet-ai/ApostleAI/tree/automatic-unit-testing.svg?style=svg)](https://circleci.com/gh/prophet-ai/ApostleAI)
 
 To run the this project on your local machine;
 1. Install [`NodeJS`](https://nodejs.org/en/download/).
