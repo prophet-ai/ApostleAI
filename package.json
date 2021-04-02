@@ -4,7 +4,8 @@
   "description": "Chatbot",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest"
   },
   "author": "apostleAI",
   "license": "ISC",
@@ -18,8 +19,5 @@
   },
   "devDependencies": {
     "jest": "^26.6.3"
-  },
-  "scripts": {
-    "test": "jest"
   }
 }
