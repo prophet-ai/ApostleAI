@@ -172,6 +172,10 @@ button {
   margin-left: auto;
 }
 
+#bot {
+  margin-right: auto;
+}
+
 .bot {
   font-family: "Carrois Gothic", sans-serif;
 }
@@ -180,6 +184,7 @@ button {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  padding: 0px 10px 0px 10px;
 }
 
 .response {
