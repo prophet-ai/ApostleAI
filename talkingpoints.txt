@@ -1,0 +1,50 @@
+ApostleAI currently uses "exact sentence matching" to generate a response to the user's input. You can use any of these prompts to get a response from the bot.
+=========================================================================
+
+Greetings:
+"hi", "hey", "hello", "good morning", "good afternoon", "good evening", "good day", "ey", "yo", "nice to see you"
+
+Goodbye:
+"bye", "goodbye", "see you later", "leave", "need to go", "gotta go", "have to go", "be right back", "be back", "brb", "peace", "peace out"
+
+How are you:
+"how are you", "how is life", "how are things"
+
+Activity questions:
+"what are you doing", "what is going on", "what is up", "what's up", "whats up"
+
+Name:
+"your name please", "your name", "may i know your name", "what is your name", "what call yourself"
+
+What is Paul?:
+"who are you", "are you human", "are you bot", "are you human or bot", "are you sentient"
+
+Age:
+"how old are you", "when were you born"
+
+Makers:
+"who created you", "who made you"
+
+Tell me a joke:
+"tell me a joke", "know any jokes", "know any good jokes", "make me laugh", "tell me another joke", "who's there", "whos there", "spell who"
+
+Comedic:
+"hahaha", "haha", "ha", "lol", "hehe", "funny", "joke", "pun"
+
+Life Questions:
+"what is life", "what is the meaning of life"
+
+Purpose Questions:
+"what is my purpose", "what is the purpose of life", "what is the purpose of living"
+
+Advice:
+"i need advice", "i need wisdom", "i need knowledge", "i need truth"
+
+Motivation:
+"motivate me", "need motivation", "give motivation", "motivational", "tell me something motivational", "more motivation"
+
+The end:
+"tell me about the end times", "tell me about the apocolypse", "tell me about the end"", "what is death"
+
+General Advice:
+"give me advice"
