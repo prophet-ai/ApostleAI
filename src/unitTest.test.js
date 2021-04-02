@@ -2,15 +2,23 @@
 const porterStemmingTest = require("./porterStemming");
 const {Wit, log} = require('node-wit');
 
-test("Wit.AI Test", () => {
+test("Wit.AI Intent Test", () => {
   const client = new Wit({ accessToken: "JPT6MY5E2CX4CJ2RXZ3JN3D7DIJS3Z4L" });
   client.message("what is the weather in London?", {})
     .then((data) => {
       expect(data.intents[0].name).toMatch("wit$get_weather");
-      console.log(inp);
     })
     .catch(console.error);
 });
+
+test("Wit.AI Sentiment Test", () => {
+    const client = new Wit({ accessToken: "JPT6MY5E2CX4CJ2RXZ3JN3D7DIJS3Z4L" });
+    client.message("I feel sad", {})
+      .then((data) => {
+        expect(data.traits.wit$sentiment[0].value).toMatch("negative");
+      })
+      .catch(console.error);
+  });
 
 //Tests if porter stemming is correcting words properly
 test("Porter Stemming Test", () => {
@@ -22,13 +30,3 @@ test("Porter Stemming Test", () => {
   expect(porterStemmingTest.textInput("discoverign")).toMatch("discovering.");
   expect(porterStemmingTest.textInput("fractoin")).toMatch("fraction.");
 });
-
-//Tests if bot is ouputting something and not throwing errors
-// test('Bot Output Test', () =>{
-//     expect().toBeDefined();
-// });
-
-//
-// test('', () =>{
-//     expect().toBeDefined();
-// });
