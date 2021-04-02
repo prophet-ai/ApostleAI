@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>APOSTLEAI</title>
@@ -33,7 +33,7 @@
 
     <div class="title"></div>
 
-    <p class = "textScramble talkingpoints"></p>
+    <p class="textScramble talkingpoints"></p>
 
     <script src="js/scramble.js"></script>
 
@@ -60,62 +60,75 @@
     <script src="/js/saveChat.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        // main script body
-        // import the socket object for socket calls
-        var socket = io();
+      // main script body
+      // import the socket object for socket calls
+      var socket = io();
 
-        // Jquery identifiers for dom objects
-        var sendChat = $('#chatButton')[0];
-        var input = $('#message')[0];
-        var messages = $('#messages')[0];
+      // Jquery identifiers for dom objects
+      var sendChat = $("#chatButton")[0];
+      var input = $("#message")[0];
+      var messages = $("#messages")[0];
 
-        // user input
-        sendChat.onclick = function() {
-            if(input.value) {
-                
-                let data = {
-                    'sender':'user',
-                    'msg': input.value,
-                }
+      // user input
 
-                socket.emit('message', data);
-                input.value = '';
-            }
+      $(document).on("keypress", function (e) {
+        if (e.which == 13) {
+          if (input.value) {
+            let data = {
+              sender: "user",
+              msg: input.value,
+            };
+
+            socket.emit("message", data);
+            input.value = "";
+          }
         }
+      });
 
-        // display messages
-        socket.on('message', function(data){
-            displayMessage(data);
-            saveChatLog(data.sender + ": " + data.msg);
-        });
+      sendChat.onclick = function () {
+        if (input.value) {
+          let data = {
+            sender: "user",
+            msg: input.value,
+          };
 
-        function displayMessage(data){
-            /*  note that the message stream that comes through is
+          socket.emit("message", data);
+          input.value = "";
+        }
+      };
+
+      // display messages
+      socket.on("message", function (data) {
+        displayMessage(data);
+        saveChatLog(data.sender + ": " + data.msg);
+      });
+
+      function displayMessage(data) {
+        /*  note that the message stream that comes through is
             a json object with sender and msg attributes */
-        
-            let messageDiv = document.createElement("div");
 
-            if(data.sender == 'user'){
-                messageDiv.id = 'user';
-                messageDiv.className = "user response box sb1";
-                // This includes an image for the user (in assets/)
-                messageDiv.innerHTML = `<span id="msgSpan">${data.msg}</span><img src="assets/user.png" class="avatar">`;
-            }else{
-                let messageImg = document.createElement('img');
-                let messageText = document.createElement("span");
-                messageDiv.id = 'bot';
-                messageImg.src = 'assets/paul.jpg';
-                messageImg.className = 'avatar';
-                messageDiv.className = "bot response box sb2";
-                messageText.innerText = data.msg;
-                messageDiv.appendChild(messageImg);
-                messageDiv.appendChild(messageText);
-            }
+        let messageDiv = document.createElement("div");
 
-            messages.appendChild(messageDiv);
-            messages.scrollTop = messages.scrollHeight - messages.clientHeight;
+        if (data.sender == "user") {
+          messageDiv.id = "user";
+          messageDiv.className = "user response box sb1";
+          // This includes an image for the user (in assets/)
+          messageDiv.innerHTML = `<span id="msgSpan">${data.msg}</span><img src="assets/user.png" class="avatar">`;
+        } else {
+          let messageImg = document.createElement("img");
+          let messageText = document.createElement("span");
+          messageDiv.id = "bot";
+          messageImg.src = "assets/paul.jpg";
+          messageImg.className = "avatar";
+          messageDiv.className = "bot response box sb2";
+          messageText.innerText = data.msg;
+          messageDiv.appendChild(messageImg);
+          messageDiv.appendChild(messageText);
         }
 
+        messages.appendChild(messageDiv);
+        messages.scrollTop = messages.scrollHeight - messages.clientHeight;
+      }
     </script>
   </body>
 </html>
