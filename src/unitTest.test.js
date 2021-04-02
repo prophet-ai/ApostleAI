@@ -13,7 +13,7 @@ test("Wit.AI Intent Test", () => {
 });
 
 test("Wit.AI Sentiment Test", () => {
-    const client = new Wit({ accessToken: "JPT6MY5E2CX4CJ2RXZ3JN3D7DIJS3Z4L" });
+    const client = new Wit({ accessToken: config.key });
     client.message("I feel sad", {})
       .then((data) => {
         expect(data.traits.wit$sentiment[0].value).toMatch("negative");
