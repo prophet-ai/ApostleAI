@@ -24,6 +24,7 @@ Once the dependencies have been installed, to start the local server;
 **Improved already implemented GUI**
 
 Our team improved on our already implemented GUI from Assignment 2 by adding some stylistic features as well as revolving conversation suggestions along the top of the page.
+
 **![](https://lh5.googleusercontent.com/owrMG2ecGGikl0MJm1uH4UFDpf-vaAqNDPvLOtnvqu-VfEB_dEpon4tdSdqPADqZHm1Jerwp0WGmMe1-3rKO3ZhnnGQlIxcxvqROvvfWRPlyvmTANofgPS8xc4uPpubdcsmlJnoL)**
 
 **Added an additional topic to our bot’s conversational repertoire**
