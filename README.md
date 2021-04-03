@@ -51,10 +51,10 @@ Another feature of Wit.AI is named entity recognition that is built into its und
 
 Thanks to our prior work with Wit.AI we were able to implement Sentiment Analysis to derive the mood of the user’s message. Utilizing Wit.AI’s Trait system, we are able to detect either a positive, neutral, or negative sentiment for the user’s message. By gauging the sentiment of the message, our bot is able to respond with an adequate and appropriate response in either a positive, neutral, or negative sentiment/tone.
 
-| Apostle AI Chat Log  |
-|--|--|
-| user: I failed my exam // bot picks up on negative sentiment<br>bot: Sometimes life is hard, you can do it // response tailored to sentiment |
-| user: it is good to see you! // bot picks up on positive sentiment <br>bot: Hi there! // response tailored to sentiment|
+| Chat | Sentiment | Bot Response |
+|--|--|--|
+| 'I failed my exam' | `negative` | 'Sometimes life is hard, you can do it!' |
+| 'It is good to see you!' | `positive` | 'Hi There!' |
 
 **Implementation of Socket.IO for messaging between user and bot**
 
