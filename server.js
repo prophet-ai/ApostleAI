@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
-const logger = require('./src/logger')
+const logger = require('./src/logger');
 const Bot = require('./src/prophet');
 
 // connections array
