@@ -12,7 +12,8 @@ exports.responses = {
       "Nice to see you!",
       "Marhabaan. Greetings.",
       "Shalom, good day.",
-      "Hi, I've missed you."
+      "Hi, I've missed you.",
+	    "How are you?"
     ],
     "neutral": [
       "Hello!",
@@ -45,6 +46,7 @@ exports.responses = {
       "Same as you...",
       "If age has something to do with time, then it is relative...",
 	    "Same as the earth.",
+      "Age does not apply to me."
     ],
     "negative": [
       "Age should not matter.",
@@ -66,7 +68,12 @@ exports.responses = {
     "negative": [
       "I don't know, are you?",
       "I have no idea, do you?",
-      "What do you mean by human?"
+      "What do you mean by human?",
+      "I am just a mere AI unlike you, a human.",
+      "I am no human",
+      "I'm just a piece of code created by human",
+      "I am an AI that was created to talk to humans like you.",
+      "I'm an AI that mimics Saint Paul."
     ]
   },
   "askingCreator": {
@@ -78,7 +85,8 @@ exports.responses = {
       "Human beings just like you.",
       "A group known only as COSC 310...",
       "I just am, there is nothing else",
-      "I refuse to answer that question on the grounds that I don’t know the answer."
+      "I refuse to answer that question on the grounds that I don’t know the answer.",
+      "I am just a piece of code created by Prophet-AI."
     ],
     "negative": [
       "I have no idea...",
@@ -96,7 +104,13 @@ exports.responses = {
       "Call me by anything!",
       "I am ApostleAI.",
       "Same as yours.",
-      "Call me Paul!"
+      "Call me Paul!",
+      "I am Saint Paul the Apostle!",
+      "I am ApostleAI",
+      "Just call me Paul",
+      "I don't actually have a name",
+      "My creators named me ApostleAI",
+      "Saint Paul the Apostle is my name"
     ],
     "negative": [
       "Didn’t I already say my name is ApostleAI?",
@@ -153,6 +167,8 @@ exports.responses = {
     "positive": [
       "Your purpose is to find your purpose.",
       "You will find it soon, so do not worry about it for now",
+      "Great minds have purposes, others have wishes.",
+      "The purpose of life is a life of purpose."
     ],
     "neutral": [
       "Maybe there is no purpose...",
@@ -161,8 +177,9 @@ exports.responses = {
       "Finding your purpose for living is your purpose for living.",
       "To be yourself",
       "Happiness is the meaning and the purpose of life, the whole aim and end of human existence.",
-      "What you are doing may be your purpose. Answers can be close by you.",
+	    "What you are doing may be your purpose. Answers can be close by you.",
       "Not to let others handle your life.",
+      "Your purpose in life is to find your purpose and give your whole heart     and soul to it"
     ],
     "negative": [
       "Your purpose is to make yourself happy",
@@ -172,6 +189,8 @@ exports.responses = {
       "You may not need a purpose to live.",
       "There are more than one answer. You have to go find them.",
       "There is no right answer. There is no wrong answer",
+      "The happiness of your life depends upon the quality of your thoughts.",
+      "You must first be who you really are, then do what you need to do, in order to have what you want."
     ]
   },
   "goodbye": {
@@ -183,7 +202,9 @@ exports.responses = {
       "Have a good day.",
       "Have a good one.",
       "Enjoy the rest of your day.",
-      "See you soon"
+      "See you soon",
+      "See you!",
+      "Until next time"
     ],
     "negative": [
       "Bye...",
@@ -195,6 +216,7 @@ exports.responses = {
     "positive": [
       "You are a greater person than you think. You can be more confident.",
       "You can make mistakes. There are many things you can learn from mistakes.",
+      "Do anything you want to do because life is short.",
     ],
     "neutral": [
       "All our dreams can come true, if we have the courage to pursue them.",
@@ -207,19 +229,25 @@ exports.responses = {
       "What you do not want done to yourself, do not do to others.",
       "Wherever you go, go with all your heart.",
       "Even if you think you are not suitable for what you are doing, you can keep doing. If you really think you cannot continue, it means there are things you may love and you are suitable.",
-      "Anything can take practice and time. Do not feel you are a loser. You are trying hard"
+      "Anything can take practice and time. Do not feel you are a loser. You are trying hard",
+      "Do not rush, take your time.",
+      "Taking a break is not a bad idea. It is actually a good idea",
+      "You should not be ashamed of escaping. You should be proud of yourself when you escape from the situation you are not feeling comfortable in. It is not easy.",
+      "Meet someone who sees what you are now, not your past.",
+      ".",
     ],
     "negative": [
       "Don’t limit yourself. Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve.",
       "Don't beat yourself up, self improvement starts now",
       "Maybe now is not the time for advice, but some self introspection...",
+      "Remember, the storm is a good opportunity for the pine and the cypress to show their strength and their stability.",
       "It is easy to hate and it is difficult to love. This is how the whole scheme of things works. All good things are difficult to achieve; and bad things are very easy to get.",
       "It does not matter how slowly you go as long as you do not stop.",
       "Better a diamond with a flaw than a pebble without.",
       "When it is obvious that the goals cannot be reached, don't adjust the goals, adjust the action steps.",
       "Sometimes, your efforts do not work and you feel you have wasted your time and you have not done things hard. However you have done your best",
       "Your life is shorter than you think. Be smart to organize your life.",
-      "Remember, the storm is a good opportunity for the pine and the cypress to show their strength and their stability."
+      "You may be afraid of making mistakes and afraid of being embarrassed of mistakes.But do not worry, other are not that interested in you so try it, make mistakes, and you learn alot from them",
     ]
   },
   "philosophy": {
@@ -290,11 +318,16 @@ exports.responses = {
       "I could ask you the same thing, would you know the answer?",
       "Maybe the meaning of life is in front of you right now, would you notice it?",
       "That is the question you'll have to find the answer to once you die.",
-      "42."
+      "42.",
+      "What’s right in front of you.",
+      "Be happy!",
+      "Make the world a better place.",
+      "Just live! Don't think about it",
     ],
     "negative": [
       "Trying to find meaning in life is hard. The real question is where should you search?",
-      "Before asking that question, ask yourself what the definition of meaning is. What is the definition of life?"
+      "Before asking that question, ask yourself what the definition of meaning is. What is the definition of life?",
+      "There is no true meaning",
     ]
   },
 };
