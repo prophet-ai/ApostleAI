@@ -40,7 +40,9 @@ export const responses = {
       "What is the meaning of age? I don't have age.",
       "I have no age because I live forever...",
       "Same as you...",
-      "If age has something to do with time, then it is relative..."
+      "If age has something to do with time, then it is relative...",
+      "I do not have such thing",
+      "Age does not apply to me"
     ],
     "negative": [
 
@@ -54,7 +56,11 @@ export const responses = {
     "neutral": [
       "I am definitely not human... I think.",
       "I am ApostleAI, and I am definitely not human.",
-      "I am just a mere AI unlike you, a human. "
+      "I am just a mere AI unlike you, a human.",
+      "I am no human",
+      "I'm just a piece of code created by human",
+      "I am an AI that was created to talk to humans like you",
+      "I'm an AI that mimics Saint Paul"
     ],
     "negative": [
       "I don't know, are you?"
@@ -69,6 +75,7 @@ export const responses = {
       "I was created by the Prophet-AI team. Who they are is beyond even me...",
       "Gods in COSC 310",
       "You created me in your mind...",
+      "I am just a piece of code created by Prophei-AI"
     ],
     "negative": [
 
@@ -84,7 +91,12 @@ export const responses = {
       "You can give me a name",
       "Call me by anything!",
       "I am apostle AI.",
-      "I am Saint Paul the Apostle!"
+      "I am Saint Paul the Apostle!",
+      "I am ApostleAI",
+      "Just call me Paul",
+      "I don't actually have a name",
+      "My creators named me ApostleAI",
+      "Saint Paul the Apostle in my name"
     ],
     "negative": [
 
@@ -132,19 +144,25 @@ export const responses = {
 
   "purpose": {
     "positive": [
-      "Your purpose is to find your purpose."
+      "Your purpose is to find your purpose.",
+      "Great minds have purposes, others have wishes",
+      "The purpose of life is a life of purpose"
+
     ],
     "neutral": [
       "Maybe there is no purpose...",
       "What is the purpose of a mosquito? What it the purpose of a lion? Now ask yourself, what is the purpose of humans?",
       "If you dig deep enough, maybe you'll find it.",
       "Finding your purpose for living is your purpose for living.",
-      "To be yourself"
+      "To be yourself",
+      "Your purpose in life is to find your purpose and give your whole heart and soul to it",
+
     ],
     "negative": [
       "Your purpose is to make yourself happy",
       "You must find the purpose of living. That’s the purpose of living",
-      "The happiness of your life depends upon the quality of your thoughts."
+      "The happiness of your life depends upon the quality of your thoughts.",
+      "You must first be who you really are, then do what you need to do, in order to have what you want."
     ]
   },
 
@@ -158,7 +176,8 @@ export const responses = {
       "See you later!",
       "Have a good day.",
       "Have a good one.",
-      "See you!"
+      "See you!",
+      "Until next time"
     ],
     "negative": [
       "Bye...",
@@ -241,6 +260,10 @@ export const responses = {
       "I could ask you the same thing, would you know the answer?",
       "Maybe the meaning of life is in front of you right now, would you notice it?",
       "That is the question you'll have to find the answer to once you die.",
+      "What’s right in front of you.",
+      "Be happy!",
+      "Make the world a better place.",
+      "Just live! Don't think about it",
     ],
     "negative": [
       "Trying to find meaning in life is hard. The real question is where should you search?",
