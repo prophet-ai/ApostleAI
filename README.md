@@ -9,7 +9,7 @@ To run the this project on your local machine;
 1. Install [`NodeJS`](https://nodejs.org/en/download/).
 2. Change the current working directory to the location where you want the cloned directory.
 3. In your terminal type, `$ git clone https://github.com/prophet-ai/ApostleAI`.
-5. After the repo has been cloned, hit the terminal with a `npm install` which should install all dependencies, in this case the only one necessary should be [Express.js](https://github.com/expressjs/express).
+5. After the repo has been cloned, hit the terminal with a `npm install` which should install all dependencies.
 
 Once the dependencies have been installed, to start the local server;
 1. In your terminal, switch to your project directory and type `npm run start` which will run the server and host the application.
