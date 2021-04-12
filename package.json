@@ -14,6 +14,7 @@
     "chalk": "^4.1.0",
     "express": "^4.17.1",
     "node-wit": "^6.0.1",
+    "opensearch": "0.0.3",
     "socket.io": "^4.0.0",
     "socket.io-client": "^4.0.0"
   },

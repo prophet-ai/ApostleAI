@@ -2,9 +2,11 @@
 const logger = require("./logger");
 const config = require("./config");
 const { Wit } = require("node-wit");
-const { json } = require("express");
+const app = require("express");
 const scripture = require("./scripture");
 const porter = require("./porterStemming.js");
+
+const https = require('https');
 
 // init the wit client using config file
 const client = new Wit({
@@ -46,22 +48,22 @@ Bot.prototype.sendMessage = function (msg) {
           sender: this.id,
           msg: "",
         };
-        
-        if(data.intents[0].name == "wikiQuery"){
+
+        if (data.intents[0].name == "wikiQuery") {
           response.msg = wikiQuery(data.entities["wit$wikipedia_search_query:wikipedia_search_query"][0].value);
-        } else{
+        } else {
           response.msg = this.pickReply(data, scripture.responses);
         }
 
         // temporary console return data with information about the bots response
         console.log(
           logger.getTime() +
-            "[Bot with ID " +
-            this.id +
-            "]: sending message " +
-            logger.info(JSON.stringify(response))
+          "[Bot with ID " +
+          this.id +
+          "]: sending message " +
+          logger.info(JSON.stringify(response))
         );
-        
+
         // Emit a message event on the socket to be picked up by server
         this.socket.emit("Intent: ", data.intents[0].name);
         this.socket.emit("message", response);
@@ -81,9 +83,9 @@ Bot.prototype.pickReply = function (input, responses) {
   if (input.intents[0] == null) {
     console.log(
       logger.getTime() +
-        logger.error(
-          "Note: Could not find any intent in user input! Selecting generic 'unknown' response now... "
-        )
+      logger.error(
+        "Note: Could not find any intent in user input! Selecting generic 'unknown' response now... "
+      )
     );
     botReply =
       scripture.unknown[Math.floor(Math.random() * scripture.unknown.length)];
@@ -100,7 +102,7 @@ Bot.prototype.pickReply = function (input, responses) {
     if (intent == input.intents[0].name) {
       botReply =
         responses[intent][sentiment][
-          Math.floor(Math.random() * responses[intent][sentiment].length)
+        Math.floor(Math.random() * responses[intent][sentiment].length)
         ];
       console.log(
         logger.getTime() + logger.info("Intent: ") + input.intents[0].name
@@ -111,13 +113,13 @@ Bot.prototype.pickReply = function (input, responses) {
       ) {
         console.log(
           logger.getTime() +
-            "No " +
-            sentiment +
-            " sentiment response found, defaulting to neutral response"
+          "No " +
+          sentiment +
+          " sentiment response found, defaulting to neutral response"
         );
         botReply =
           responses[intent]["neutral"][
-            Math.floor(Math.random() * responses[intent]["neutral"].length)
+          Math.floor(Math.random() * responses[intent]["neutral"].length)
           ];
       }
 
@@ -128,11 +130,11 @@ Bot.prototype.pickReply = function (input, responses) {
   //Message if AI interpreted intent is not available in code
   console.log(
     logger.getTime() +
-      logger.error(
-        "Note: Recognized intent '" +
-          input.intents[0].name +
-          "' but could not find in scripture.js"
-      )
+    logger.error(
+      "Note: Recognized intent '" +
+      input.intents[0].name +
+      "' but could not find in scripture.js"
+    )
   );
 
   botReply =
@@ -143,19 +145,37 @@ Bot.prototype.pickReply = function (input, responses) {
 function wikiQuery(query) {
   // ajax call to pass the bot information from wit ai
   // $.ajax({
-     url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&generator=prefixsearch&redirects=1&converttitles=1&formatversion=2&exintro=1&explaintext=1&gpssearch=' + query,
-  //   success: function(data){
-  //     // output the witai response to the console
-  //     console.emit("[WIKI RESPONSE]: " + JSON.stringify(data));
-  //     // Save the wit ai response to the console
-  //     //SaveFunction.saveChatLog("\n[WIKI RESPONSE TO] '" + input + "' -> " + JSON.stringify(data) + "\n");
+  url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&generator=prefixsearch&redirects=1&converttitles=1&formatversion=2&exintro=1&explaintext=1&gpssearch=' + query,
+    //   success: function(data){
+    //     // output the witai response to the console
+    //     console.emit("[WIKI RESPONSE]: " + JSON.stringify(data));
+    //     // Save the wit ai response to the console
+    //     //SaveFunction.saveChatLog("\n[WIKI RESPONSE TO] '" + input + "' -> " + JSON.stringify(data) + "\n");
 
-  //     //send the returned data from wit to the parser here
-  //     return (query);
-  //   }
-  // });
-  loadJSON(url, data);
-  return data;
+    //     //send the returned data from wit to the parser here
+    //     return (query);
+    //   }
+    // });
+    https.get(url, (resp) => {
+      let data = '';
+
+      // A chunk of data has been received.
+      resp.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      // The whole response has been received. Print out the result.
+      resp.on('end', () => {
+        console.log(JSON.parse(data).query);
+        //return JSON.parse(data);
+      });
+
+    }).on("error", (err) => {
+      console.log("Error: " + err.message);
+    });
+
+
+  //return data;
 }
 
 module.exports = Bot;
