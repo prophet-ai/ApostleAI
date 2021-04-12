@@ -44,8 +44,14 @@ Bot.prototype.sendMessage = function (msg) {
         // create response object to be sent to the server
         let response = {
           sender: this.id,
-          msg: this.pickReply(data, scripture.responses),
+          msg: "",
         };
+        
+        if(data.intents[0].name == "wikiQuery"){
+          response.msg = wikiQuery(data.entities["wit$wikipedia_search_query:wikipedia_search_query"][0].value);
+        } else{
+          response.msg = this.pickReply(data, scripture.responses);
+        }
 
         // temporary console return data with information about the bots response
         console.log(
@@ -55,9 +61,9 @@ Bot.prototype.sendMessage = function (msg) {
             "]: sending message " +
             logger.info(JSON.stringify(response))
         );
-
+        
         // Emit a message event on the socket to be picked up by server
-        // this.socket.emit("Intent: ", data.intents[0].name);
+        this.socket.emit("Intent: ", data.intents[0].name);
         this.socket.emit("message", response);
       })
       // catch errors and log it to console on the error stream
@@ -133,5 +139,23 @@ Bot.prototype.pickReply = function (input, responses) {
     "I understand what you're saying, but my overlords have not blessed me with the knowledge to respond...";
   return botReply;
 };
+
+function wikiQuery(query) {
+  // ajax call to pass the bot information from wit ai
+  // $.ajax({
+     url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&generator=prefixsearch&redirects=1&converttitles=1&formatversion=2&exintro=1&explaintext=1&gpssearch=' + query,
+  //   success: function(data){
+  //     // output the witai response to the console
+  //     console.emit("[WIKI RESPONSE]: " + JSON.stringify(data));
+  //     // Save the wit ai response to the console
+  //     //SaveFunction.saveChatLog("\n[WIKI RESPONSE TO] '" + input + "' -> " + JSON.stringify(data) + "\n");
+
+  //     //send the returned data from wit to the parser here
+  //     return (query);
+  //   }
+  // });
+  loadJSON(url, data);
+  return data;
+}
 
 module.exports = Bot;
